@@ -1049,6 +1049,7 @@ const app = {
     const wt = s.worktype;
     const workQs = (wt==='student'||wt==='student-works')?['st1','st2','st3']:(wt==='remote'||wt==='freelance'||wt==='retired')?['r1','r2','r3']:(wt==='hybrid')?['hy1','hy2']:['o1','o2'];
     const gt = id => { const v=a[id]; if(!v) return ''; if(Array.isArray(v)) return v.map(x=>x.text).join(' | '); return v.text||''; };
+    
     const payload = {
       timestamp: new Date().toISOString(), name: s.playerName,
       segment: s.segment, age_group: ageMap[s.segment],
@@ -1061,11 +1062,16 @@ const app = {
       work_q1: gt(workQs[0]), work_q2: gt(workQs[1]), work_q3: gt(workQs[2]||''),
       cl1_awareness: gt('cl1'), cl2_tried: gt('cl2'), cl3_ideal: gt('cl3'), cl4_lighting: gt('cl4')
     };
-    try { 
-        fetch(API_URL, {method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify(payload)})
-        .catch(e => console.log('Database transmission silent failure', e));
-    }
-    catch(e) { console.log('DB Post Error', e); }
+
+    // This mode avoids CORS blockers and fires the request without needing a response
+    fetch(API_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+    })
+    .then(() => console.log('Data sent successfully'))
+    .catch(error => console.error('Error:', error));
   },
 
   fetchStats() {
