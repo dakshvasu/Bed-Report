@@ -85,7 +85,7 @@ h1{font-family:var(--font-head);font-size:5.5rem;line-height:.85;margin-bottom:.
 h2{font-family:var(--font-head);font-size:2.6rem;line-height:1.05;margin-bottom:1.5rem;letter-spacing:1px;text-transform:uppercase}
 .tag{
   background:var(--tag-bg);color:var(--tag-color);padding:6px 14px;font-weight:700;font-size:1rem;
-  text-transform:uppercase;display:inline-block;margin-bottom:1.5rem;border:3px solid var(--tag-color);
+  text-transform:uppercase;display:inline-block;border:3px solid var(--tag-color);
   box-shadow:var(--tag-shadow);transform:rotate(-2deg);font-family:var(--font-head);letter-spacing:1px;
 }
 .stamp{
@@ -93,6 +93,15 @@ h2{font-family:var(--font-head);font-size:2.6rem;line-height:1.05;margin-bottom:
   font-size:1.8rem;padding:6px 20px;transform:rotate(-6deg);letter-spacing:3px;margin:1rem 0;opacity:.85;
   box-shadow:0 0 0 2px #E8003D inset;
 }
+.q-header-row{
+  display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;
+}
+.back-btn{
+  background:none; border:none; font-family:var(--font-mono); font-size:1.3rem;
+  font-weight:700; cursor:pointer; text-decoration:underline; color:var(--text);
+  transition:opacity 0.2s; outline:none; -webkit-tap-highlight-color:transparent;
+}
+.back-btn:hover{ opacity:0.6; }
 
 /* === ENTRY TILES === */
 .entry-header{text-align:center;margin-bottom:1.5rem}
@@ -227,7 +236,7 @@ body.segment-senior #result-title{color:#C4522A;text-shadow:3px 3px 0px #1C1C1C;
     </div>
 
     <div id="screen-name" class="screen">
-      <div class="tag">STEP 01 // IDENTIFICATION</div>
+      <div class="tag" style="margin-bottom:1.5rem;">STEP 01 // IDENTIFICATION</div>
       <h2 id="name-heading" style="background:#fff;display:inline-block;padding:8px 15px;border:var(--border);box-shadow:var(--shadow);transform:rotate(-1deg)">ENTER YOUR NAME:</h2>
       <p id="name-subtext" style="font-weight:600;margin-bottom:1.5rem;font-size:1.05rem">This is what will appear on the scoreboard at the end.</p>
       <div class="input-group">
@@ -237,7 +246,10 @@ body.segment-senior #result-title{color:#C4522A;text-shadow:3px 3px 0px #1C1C1C;
     </div>
 
     <div id="screen-question" class="screen">
-      <div class="tag" id="q-counter">Q 1</div>
+      <div class="q-header-row">
+        <div class="tag" id="q-counter" style="margin-bottom:0;">Q 1</div>
+        <button class="back-btn" id="back-btn" onclick="app.goBack()" style="display:none;">[← BACK]</button>
+      </div>
       <h2 id="q-title" style="background:#fff;display:inline-block;padding:10px 15px;border:var(--border);box-shadow:var(--shadow);transform:rotate(1deg);margin-bottom:2rem;line-height:1.1"></h2>
       <div class="options-grid" id="q-options"></div>
       <button id="next-btn" class="primary-btn" style="display:none" onclick="app.nextQuestion()">LOG &amp; PROCEED</button>
@@ -248,7 +260,7 @@ body.segment-senior #result-title{color:#C4522A;text-shadow:3px 3px 0px #1C1C1C;
     </div>
 
     <div id="screen-result" class="screen">
-      <div class="tag" style="background:var(--accent);color:#fff;border-color:var(--accent)">FINAL OUTPUT</div>
+      <div class="tag" style="background:var(--accent);color:#fff;border-color:var(--accent); margin-bottom:1.5rem;">FINAL OUTPUT</div>
       <h1 id="result-title" style="font-size:6rem;margin:10px 0 1rem">STATE</h1>
       <div class="warning-label">
         <div class="warning-title">THE DIAGNOSIS</div>
@@ -521,7 +533,6 @@ function getNextBatch(phase, state) {
   return q;
 }
 
-// Rewritten Adult and Senior states to be punchy single/double words so they fit perfectly.
 const STATE_NAMES = {
   student:['RAW','TOASTED','MED RARE','WELL DONE','CHARCOAL'],
   adult:['SOLID','SLIPPING','BLURRED','COLLAPSED','CRITICAL'],
@@ -566,7 +577,6 @@ function getDiagnosis(segment, level, s) {
   if (segment==='adult') {
     if (level===0) {
       let d="Assessment complete. Your work-rest boundaries are holding. Spatial hygiene metrics above baseline. The domestic workspace has not collapsed into the rest environment.";
-      if (s.awareness==='changing') d+=" Active boundary maintenance detected. Continue current protocol.";
       return d;
     }
     if (level===1) {
@@ -623,7 +633,7 @@ function getDiagnosis(segment, level, s) {
 
 function getShareCopy(segment, stateName, score) {
   const c = [
-    `The Bed Report just diagnosed me as: ${stateName} (Score: ${score}). My mattress filed a formal complaint.`,
+    `The Bed Report diagnosed me as: ${stateName} (Score: ${score}). My mattress filed a formal complaint.`,
     `I just took The Bed Report and got: ${stateName} with ${score} points. The algorithm roasted my posture.`,
     `Just opened my file on The Bed Report. Diagnosis: ${stateName} (${score} points). Apparently my habits have their own habits.`
   ];
@@ -645,7 +655,7 @@ const app = {
     totalScore: 0, playerName: '', currentIndex: 0,
     questionQueue: [], answers: {}, answerKeys: {},
     isActive: false, questionNumber: 0, phase: 'universal',
-    phaseIndex: 0
+    phaseIndex: 0, history: []
   },
   phases: ['universal','living','work','special','children','symptom','closing'],
 
@@ -684,6 +694,7 @@ const app = {
     if (app.state.playerName.length < 2) return;
     app.state.isActive = true;
     app.state.questionNumber = 0;
+    app.state.history = [];
     app.transition('screen-name', 'screen-question');
     app.renderQuestion();
   },
@@ -703,6 +714,9 @@ const app = {
     app.state.questionNumber++;
     document.getElementById('q-counter').innerText = 'Q ' + app.state.questionNumber;
     
+    // Toggle back button visibility
+    document.getElementById('back-btn').style.display = app.state.history.length > 0 ? 'block' : 'none';
+    
     const title = typeof q.title === 'string' ? q.title : (q.title[app.state.segment] || q.title.student || q.title.adult);
     document.getElementById('q-title').innerText = title;
     
@@ -712,7 +726,7 @@ const app = {
     const optContainer = document.getElementById('q-options');
     optContainer.innerHTML = '';
     document.getElementById('next-btn').style.display = 'none';
-    const pct = Math.min((app.state.questionNumber / 14) * 100, 95);
+    const pct = Math.min((app.state.questionNumber / 17) * 100, 95);
     document.getElementById('progress-bar').style.width = pct + '%';
 
     opts.forEach((opt, idx) => {
@@ -769,6 +783,14 @@ const app = {
       return;
     }
     
+    // Save state BEFORE advancing so we can go back
+    app.state.history.push({
+        phase: app.state.phase,
+        currentIndex: app.state.currentIndex,
+        questionNumber: app.state.questionNumber,
+        qId: q.id
+    });
+    
     if (Array.isArray(answer)) {
       answer.forEach(a => { app.state.totalScore += a.points; });
       if (q.id === 'u4') {
@@ -786,6 +808,62 @@ const app = {
     app.state.currentIndex++;
     if (app.state.currentIndex >= app.state.questionQueue.length) { app.advancePhase(); }
     else { app.renderQuestion(); }
+  },
+
+  goBack() {
+    if (app.state.history.length === 0) return;
+    const last = app.state.history.pop();
+    
+    // Revert Phase and Indexes
+    app.state.phase = last.phase;
+    app.state.currentIndex = last.currentIndex;
+    app.state.questionNumber = last.questionNumber - 1; 
+    
+    // Wipe the answer we are reverting from memory
+    delete app.state.answers[last.qId];
+    delete app.state.answerKeys[last.qId];
+    
+    // Rebuild state tags based on the surviving answers
+    app.recalculateState();
+    
+    // Re-fetch correct queue for the reverted phase
+    if (app.state.phase === 'universal') {
+        app.state.questionQueue = buildQuestionQueue(app.state);
+    } else {
+        app.state.questionQueue = getNextBatch(app.state.phase, app.state);
+    }
+    
+    app.renderQuestion();
+  },
+
+  recalculateState() {
+    const s = app.state;
+    // Wipe specific logic tags
+    s.living = null; s.worktype = null; s.bedlevel = null;
+    s.symptomLoad = 0; s.awareness = null; s.genderSignal = null;
+    s.partner = false; s.children = false; s.a3trigger = false;
+    s.totalScore = 0;
+
+    // Loop through existing answers and re-apply their points/tags
+    for (const key in s.answerKeys) {
+        const ans = s.answerKeys[key];
+        if (Array.isArray(ans)) {
+            ans.forEach(a => { 
+                s.totalScore += a.points; 
+                if (a.option && a.option.sets) {
+                    Object.keys(a.option.sets).forEach(k => { s[k] = a.option.sets[k]; });
+                }
+            });
+            if (key === 'u4') {
+                s.symptomLoad = ans.filter(a => a.option && a.option.symptom).length;
+            }
+        } else {
+            s.totalScore += ans.points;
+            if (ans.option && ans.option.sets) {
+                Object.keys(ans.option.sets).forEach(k => { s[k] = ans.option.sets[k]; });
+            }
+        }
+    }
   },
 
   advancePhase() {
@@ -957,7 +1035,7 @@ const app = {
       partner:false,children:false,a3trigger:false,
       totalScore:0,playerName:'',currentIndex:0,
       questionQueue:[],answers:{},answerKeys:{},
-      isActive:false,questionNumber:0,phase:'universal',phaseIndex:0
+      isActive:false,questionNumber:0,phase:'universal',phaseIndex:0, history:[]
     };
     document.body.className = '';
     document.getElementById('user-name-input').value = '';
