@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE BED REPORT — Spatial Collapse Index</title>
-    <meta name="description" content="You commute from your pillow to your laptop in zero seconds. The algorithm requires your data.">
-    <meta property="og:title" content="THE BED REPORT — Spatial Collapse Index">
+    <title>THE BED REPORT</title>
+    <meta name="description" content="Your bedroom knows exactly what you've been doing. Open the file.">
+    <meta property="og:title" content="THE BED REPORT">
     <meta property="og:description" content="Your bedroom has a file on you. Open it.">
     <meta property="og:type" content="website">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;700&family=Playfair+Display:wght@400;700&family=VT323&display=swap" rel="stylesheet">
@@ -95,29 +95,24 @@ h2{font-family:var(--font-head);font-size:2.6rem;line-height:1.05;margin-bottom:
 }
 
 /* === ENTRY TILES === */
-.entry-header{text-align:center;margin-bottom:2rem}
-.entry-header h1{font-size:6rem;color:#000;text-shadow:3px 3px 0px #fff,6px 6px 0px #000;transform:rotate(-2deg)}
-.entry-sub{font-family:var(--font-head);font-size:2rem;letter-spacing:4px;color:#000;margin-top:.5rem;opacity:.7}
+.entry-header{text-align:center;margin-bottom:1.5rem}
+.entry-header h1{font-size:6rem;color:#000;text-shadow:3px 3px 0px #fff,6px 6px 0px #000;transform:rotate(-2deg); margin: 0;}
 .entry-body{font-size:1.15rem;font-weight:500;line-height:1.5;margin-bottom:2.5rem;max-width:520px;margin-left:auto;margin-right:auto;text-align:center;}
 .tiles-grid{display:flex;flex-direction:column;gap:16px;margin-bottom:1rem}
 .tile{
-  border:var(--border);padding:1.8rem;cursor:pointer;transition:all .15s;position:relative;overflow:hidden;
-  -webkit-tap-highlight-color:transparent;
+  border:var(--border);padding:1.5rem;cursor:pointer;transition:all .15s;position:relative;overflow:hidden;
+  -webkit-tap-highlight-color:transparent; text-align:center;
 }
 .tile:active{transform:translate(4px,4px)!important;box-shadow:0 0 0 #000!important}
-.tile-label{font-family:var(--font-head);font-size:2.2rem;letter-spacing:1px;text-transform:uppercase;margin-bottom:.3rem}
-.tile-sub{font-size:.95rem;font-weight:500;opacity:.8}
+.tile-label{font-family:var(--font-head);font-size:2.5rem;letter-spacing:1px;text-transform:uppercase; margin:0;}
 .tile-student{background:#000;color:#FFD900;box-shadow:6px 6px 0px #FFD900}
 .tile-student:hover{transform:translate(-4px,-4px);box-shadow:10px 10px 0px #FFD900}
-.tile-student .tile-sub{color:#fff;opacity:.7}
 .tile-adult{background:#fff;color:#000;box-shadow:4px 4px 0px #000;border-top:6px solid #E8003D}
 .tile-adult:hover{transform:translate(-4px,-4px);box-shadow:8px 8px 0px #000}
-.tile-adult .tile-label{font-family:'IBM Plex Mono',monospace;font-size:1.6rem;font-weight:700}
-.tile-adult .tile-sub{font-family:'IBM Plex Mono',monospace;font-size:.85rem}
+.tile-adult .tile-label{font-family:'IBM Plex Mono',monospace;font-weight:700; font-size:2rem;}
 .tile-senior{background:#F7F2E8;color:#1C1C1C;box-shadow:4px 4px 0px #1C1C1C;border-left:6px solid #C4522A}
 .tile-senior:hover{transform:translate(-4px,-4px);box-shadow:8px 8px 0px #1C1C1C}
-.tile-senior .tile-label{font-family:'Playfair Display',serif;font-size:1.8rem}
-.tile-senior .tile-sub{font-family:'Playfair Display',serif;font-size:.9rem;font-style:italic}
+.tile-senior .tile-label{font-family:'Playfair Display',serif; font-size: 2.2rem;}
 
 /* === INPUTS & BUTTONS === */
 .input-group{margin-bottom:2rem}
@@ -206,54 +201,50 @@ body.segment-senior #result-title{color:#C4522A;text-shadow:3px 3px 0px #1C1C1C;
 </head>
 <body>
 <div id="app-wrapper">
-  <div class="os-bar"><div class="marquee" id="marquee-text">// YOUR BED HAS YOUR SCHEDULE // THE DATA IS NOT FLATTERING // SELECT YOUR FILE // OPEN THE RECORD // WHICH ONE ARE YOU //</div></div>
+  <div class="os-bar"><div class="marquee" id="marquee-text">// YOUR BED HAS YOUR SCHEDULE // OPEN THE RECORD // WHICH ONE ARE YOU //</div></div>
   <div class="progress-wrapper"><div class="progress-fill" id="progress-bar"></div></div>
   <div class="content-container">
 
     <div id="screen-entry" class="screen active" style="text-align:center">
       <div class="entry-header">
         <h1>THE BED<br>REPORT</h1>
-        <div class="entry-sub">SPATIAL COLLAPSE INDEX</div>
       </div>
       <div class="stamp">CASE OPEN</div>
       <div class="entry-body">
-        You commute from your pillow to your laptop in zero seconds. You spend 11 hours in the exact same room you sleep in. You call it productivity. Your nervous system calls it a threat.<br><br><strong>The algorithm requires your data.</strong>
+        Your bedroom knows exactly what you've been doing. It's time to open the file.<br><br>Take the test, get your diagnosis, and see how you rank against everyone else who dared to face their habits.<br><br><strong>Select your age group to begin.</strong>
       </div>
       <div class="tiles-grid">
         <div class="tile tile-student" onclick="app.selectSegment('student')">
-          <div class="tile-label">18–24 // THE SYSTEM</div>
-          <div class="tile-sub">Did you choose this, or did it just happen?</div>
+          <div class="tile-label">18–24</div>
         </div>
         <div class="tile tile-adult" onclick="app.selectSegment('adult')">
-          <div class="tile-label">25–35 // THE AUDIT</div>
-          <div class="tile-sub">Your habits have a paper trail.</div>
+          <div class="tile-label">25–35</div>
         </div>
         <div class="tile tile-senior" onclick="app.selectSegment('senior')">
-          <div class="tile-label">35+ // THE RECORD</div>
-          <div class="tile-sub">Some habits are old enough to have their own habits.</div>
+          <div class="tile-label">35+</div>
         </div>
       </div>
     </div>
 
     <div id="screen-name" class="screen">
       <div class="tag">STEP 01 // IDENTIFICATION</div>
-      <h2 id="name-heading" style="background:#fff;display:inline-block;padding:8px 15px;border:var(--border);box-shadow:var(--shadow);transform:rotate(-1deg)">ENTER SUBJECT ALIAS:</h2>
-      <p id="name-subtext" style="font-weight:600;margin-bottom:1.5rem;font-size:1.05rem">Your identifier for the record. Make it count.</p>
+      <h2 id="name-heading" style="background:#fff;display:inline-block;padding:8px 15px;border:var(--border);box-shadow:var(--shadow);transform:rotate(-1deg)">ENTER YOUR NAME:</h2>
+      <p id="name-subtext" style="font-weight:600;margin-bottom:1.5rem;font-size:1.05rem">This is what will appear on the scoreboard at the end.</p>
       <div class="input-group">
-        <input type="text" id="user-name-input" placeholder="TYPE ALIAS..." autocomplete="off">
+        <input type="text" id="user-name-input" placeholder="TYPE NAME..." autocomplete="off">
       </div>
-      <button class="primary-btn" id="start-btn" style="display:none" onclick="app.startQuiz()">CONFIRM IDENTITY</button>
+      <button class="primary-btn" id="start-btn" style="display:none" onclick="app.startQuiz()">START THE TEST</button>
     </div>
 
     <div id="screen-question" class="screen">
       <div class="tag" id="q-counter">Q 1</div>
       <h2 id="q-title" style="background:#fff;display:inline-block;padding:10px 15px;border:var(--border);box-shadow:var(--shadow);transform:rotate(1deg);margin-bottom:2rem;line-height:1.1"></h2>
       <div class="options-grid" id="q-options"></div>
-      <button id="next-btn" class="primary-btn" style="display:none" onclick="app.nextQuestion()">LOG DATA &amp; PROCEED</button>
+      <button id="next-btn" class="primary-btn" style="display:none" onclick="app.nextQuestion()">LOG &amp; PROCEED</button>
     </div>
 
     <div id="screen-calculating" class="screen" style="padding:4rem 0">
-      <div class="glitch-loader" id="calc-text">PROCESSING<br>DATA...</div>
+      <div class="glitch-loader" id="calc-text">CALCULATING<br>SCORE...</div>
     </div>
 
     <div id="screen-result" class="screen">
@@ -265,8 +256,8 @@ body.segment-senior #result-title{color:#C4522A;text-shadow:3px 3px 0px #1C1C1C;
       </div>
 
       <div class="lb-container" id="leaderboard-section" style="display:none;">
-        <h2 id="lb-title" style="font-size: 2.5rem; margin-bottom: 0.5rem; text-align:center;">COHORT RANKING</h2>
-        <p class="lb-context">The Spatial Collapse Index scores your environment, habits, and physical strain. A higher score means severe boundary collapse. Let's see where you rank against the cohort.</p>
+        <h2 id="lb-title" style="font-size: 2.5rem; margin-bottom: 0.5rem; text-align:center;">THE SCOREBOARD</h2>
+        <p class="lb-context">Your score measures how much your work has taken over your rest space. The higher the score, the worse the habit. Here is where you stand against everyone else.</p>
         
         <div id="user-rank-display"></div>
 
@@ -280,7 +271,7 @@ body.segment-senior #result-title{color:#C4522A;text-shadow:3px 3px 0px #1C1C1C;
         <button class="primary-btn share-btn" id="share-btn" onclick="app.shareWhatsApp()">SHARE ON WHATSAPP</button>
         <button class="primary-btn secondary" id="copy-btn" onclick="app.copyShareLink()">COPY LINK</button>
       </div>
-      <button class="primary-btn secondary" onclick="app.restart()" style="margin-top:.5rem">REBOOT SYSTEM</button>
+      <button class="primary-btn secondary" onclick="app.restart()" style="margin-top:.5rem">START OVER</button>
     </div>
 
   </div>
@@ -288,7 +279,7 @@ body.segment-senior #result-title{color:#C4522A;text-shadow:3px 3px 0px #1C1C1C;
 <script>
 const API_URL="https://script.google.com/macros/s/AKfycby3E8AEPHN9DZp5vq56awAewPqfAjnItiHf93rbaonJIjXv0E741V0s_9hK9g-wvFH6Fg/exec";
 
-// --- NEW 17-QUESTION ARCHITECTURE ---
+// --- THE 17-QUESTION ARCHITECTURE ---
 const Q = {
   // PHASE 1: UNIVERSAL
   u1: { id: 'u1', type: 'radio',
@@ -452,7 +443,7 @@ const Q = {
     { text: 'Propped up in bed with the laptop', points: 4 }
   ]},
 
-  // PHASE 4: CO-HABITANTS (Dynamic logic)
+  // PHASE 4: CO-HABITANTS
   p_pet: { id: 'p_pet', type: 'radio', title: "If you have pets at home, do they ever dictate your workspace?", options: [
     { text: 'Yes, they steal my chair so I move to the bed', points: 3 },
     { text: 'Sometimes, but I eventually move them', points: 1 },
@@ -501,12 +492,10 @@ const Q = {
   ]}
 };
 
-// Build initial universal queue (Phase 1)
 function buildQuestionQueue(state) {
   return [Q.u1, Q.u2, Q.u3, Q.u4];
 }
 
-// Map the dynamic 17-question branching flow
 function getNextBatch(phase, state) {
   const q = [];
   if (phase === 'living') {
@@ -631,33 +620,21 @@ function getDiagnosis(segment, level, s) {
   return "Assessment complete.";
 }
 
-function getShareCopy(segment, stateName, url) {
-  if (segment==='student') {
-    const c=["The Bed Report just diagnosed me as "+stateName+". I am legally no longer allowed to work horizontal. Take the audit: "+url,
-      "My Spatial Collapse Index came back "+stateName+". The algorithm has opinions about my spine. Your turn: "+url,
-      "Just got assessed by The Bed Report. Result: "+stateName+". My mattress filed a formal complaint. Open your file: "+url];
-    return c[Math.floor(Math.random()*c.length)];
-  }
-  if (segment==='adult') {
-    const c=["Just got my Spatial Collapse Index back. Officially: "+stateName+". The algorithm roasted my posture. Drop your stats: "+url,
-      "The Bed Report gave me "+stateName+" on my quarterly spatial audit. My work-rest boundary is apparently under review. Get assessed: "+url,
-      "Performance review from The Bed Report: "+stateName+". The data is not flattering. File yours: "+url];
-    return c[Math.floor(Math.random()*c.length)];
-  }
-  const c=["The Bed Report assessed me as "+stateName+". Some patterns are older than I realized. Open your record: "+url,
-    "My Spatial Collapse Index came back: "+stateName+". The record has been accumulating longer than I thought. Check yours: "+url,
-    "Just opened my file on The Bed Report. Result: "+stateName+". Apparently my habits have their own habits. Your turn: "+url];
-  return c[Math.floor(Math.random()*c.length)];
+function getShareCopy(segment, stateName, score) {
+  const c = [
+    `The Bed Report just diagnosed me as: ${stateName} (Score: ${score}). My mattress filed a formal complaint.`,
+    `I just took The Bed Report and got: ${stateName} with ${score} points. The algorithm roasted my posture.`,
+    `Just opened my file on The Bed Report. Diagnosis: ${stateName} (${score} points). Apparently my habits have their own habits.`
+  ];
+  return c[Math.floor(Math.random() * c.length)];
 }
 
 const MARQUEE = {
-  entry:"// YOUR BED HAS YOUR SCHEDULE // THE DATA IS NOT FLATTERING // SELECT YOUR FILE // OPEN THE RECORD // WHICH ONE ARE YOU //",
-  student:"// YOUR BED KNOWS YOUR SCHEDULE // YOUR MATTRESS HAS OPINIONS // THE DATA IS NOT FLATTERING // THE ALGORITHM KNOWS WHEN YOU LIE //",
-  adult:"// QUARTERLY SPATIAL AUDIT IN PROGRESS // ALL RESPONSES ARE LOGGED // YOUR HABITS HAVE A PAPER TRAIL // PERFORMANCE REVIEW INITIATED //",
-  senior:"// THE RECORD IS OPEN // SOME PATTERNS PREDATE YOUR AWARENESS // THE DATA HAS BEEN ACCUMULATING // FILE UNDER REVIEW //"
+  entry:"// YOUR BED HAS YOUR SCHEDULE // OPEN THE RECORD // WHICH ONE ARE YOU //",
+  student:"// YOUR BED KNOWS YOUR SCHEDULE // YOUR MATTRESS HAS OPINIONS // THE ALGORITHM KNOWS WHEN YOU LIE //",
+  adult:"// AUDIT IN PROGRESS // ALL RESPONSES ARE LOGGED // YOUR HABITS HAVE A PAPER TRAIL //",
+  senior:"// THE RECORD IS OPEN // SOME PATTERNS PREDATE YOUR AWARENESS // FILE UNDER REVIEW //"
 };
-
-const CALC_TEXT = {student:"PROCESSING<br>MATRIX...",adult:"COMPILING<br>AUDIT...",senior:"REVIEWING<br>RECORD..."};
 
 const app = {
   state: {
@@ -695,14 +672,6 @@ const app = {
     app.state.segment = seg;
     document.body.className = 'segment-' + seg;
     document.getElementById('marquee-text').textContent = MARQUEE[seg] || MARQUEE.entry;
-    const headings = {student:'ENTER SUBJECT ALIAS:',adult:'ENTER IDENTIFIER:',senior:'ENTER SUBJECT ALIAS:'};
-    const subs = {
-      student:'Your stats will be measured against the entire cohort. Top 5 hit the Wall of Shame.',
-      adult:'This identifier attaches to your final Spatial Collapse ranking.',
-      senior:'Your data will be cross-referenced with your demographic baseline.'
-    };
-    document.getElementById('name-heading').textContent = headings[seg];
-    document.getElementById('name-subtext').textContent = subs[seg];
     app.state.questionQueue = buildQuestionQueue(app.state);
     app.state.phase = 'universal';
     app.state.phaseIndex = 0;
@@ -756,8 +725,7 @@ const app = {
 
     if (q.type === 'multi') {
       document.getElementById('next-btn').style.display = 'block';
-      const labels = {student:'LOG DATA & PROCEED',adult:'CONFIRM & PROCEED',senior:'CONTINUE'};
-      document.getElementById('next-btn').textContent = labels[app.state.segment] || 'PROCEED';
+      document.getElementById('next-btn').textContent = 'PROCEED';
     }
   },
 
@@ -859,27 +827,23 @@ const app = {
   processResults() {
     try {
         document.getElementById('progress-bar').style.width = '100%';
-        document.getElementById('calc-text').innerHTML = CALC_TEXT[app.state.segment] || 'PROCESSING...';
         app.transition('screen-question', 'screen-calculating');
         
         const s = app.state;
         const level = getStateLevel(s.totalScore);
         const title = getResultTitle(s.segment, level);
         const diag = getDiagnosis(s.segment, level, s);
-        const url = window.location.href;
-        const shareCopy = getShareCopy(s.segment, title, url);
+        
+        // Share text does not contain raw URLs visually anymore
+        const shareCopy = getShareCopy(s.segment, title, s.totalScore);
         
         document.getElementById('result-title').innerText = title;
         document.getElementById('result-diagnosis').innerText = diag;
         document.getElementById('share-copy').innerText = shareCopy;
         
-        if (s.segment === 'student' || s.segment === 'adult') {
-            document.getElementById('leaderboard-section').style.display = 'block';
-            document.getElementById('lb-title').innerText = s.segment === 'student' ? 'WALL OF SHAME (TOP 5)' : 'CRITICAL COHORT RANKING';
-            app.fetchLeaderboard();
-        } else {
-            document.getElementById('leaderboard-section').style.display = 'none';
-        }
+        // Show leaderboard to everyone
+        document.getElementById('leaderboard-section').style.display = 'block';
+        app.fetchLeaderboard();
 
         app.submitToDatabase(title);
     } catch (error) {
@@ -891,17 +855,19 @@ const app = {
 
   shareWhatsApp() {
     const text = document.getElementById('share-copy').innerText;
-    window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank');
+    const url = window.location.href;
+    window.open('https://wa.me/?text=' + encodeURIComponent(text + " Take the test here: " + url), '_blank');
   },
 
   copyShareLink() {
     const text = document.getElementById('share-copy').innerText;
-    navigator.clipboard.writeText(text).then(() => {
+    const fullText = text + " Take the test here: " + window.location.href;
+    navigator.clipboard.writeText(fullText).then(() => {
       const btn = document.getElementById('copy-btn');
       btn.innerText = 'COPIED'; setTimeout(() => { btn.innerText = 'COPY LINK'; }, 2000);
     }).catch(() => {
       const ta = document.createElement('textarea');
-      ta.value = text; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+      ta.value = fullText; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
       document.getElementById('copy-btn').innerText = 'COPIED';
       setTimeout(() => { document.getElementById('copy-btn').innerText = 'COPY LINK'; }, 2000);
     });
@@ -973,7 +939,7 @@ const app = {
                 <div style="text-align:center; padding: 1.2rem; background: #000; color: #fff; border: var(--border); font-family: var(--font-mono); font-size: 1.4rem; margin-bottom: 1.5rem; font-weight: bold; transform: rotate(-1deg); box-shadow: var(--shadow);">
                     <div style="color:var(--accent-lime); font-size:1rem; margin-bottom: 0.5rem;">— YOUR PERFORMANCE FILE —</div>
                     SCORE DETECTED: <span style="color:var(--accent); font-size: 1.8rem;">${myScore} pts</span><br>
-                    COHORT RANKING: <span style="color:var(--accent); font-size: 1.8rem;">#${myRank}</span> out of ${totalCohortSize}
+                    RANKING: <span style="color:var(--accent); font-size: 1.8rem;">#${myRank}</span> out of ${totalCohortSize}
                 </div>`;
             rankDisplay.style.display = 'block';
         })
