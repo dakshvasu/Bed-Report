@@ -471,7 +471,7 @@ const Q = {
   ]},
   p_partner: { id: 'p_partner', type: 'radio', title: "Sharing a living space requires compromise. How does living with a partner affect your workspace boundaries?", condition: s => s.partner === true, options: [
     { text: 'We keep each other disciplined with designated workspaces', points: 1 },
-    { text: 'We both ended up normalizing working from the bed/couch', points: 4 },
+    { text: 'We উভয় ended up normalizing working from the bed/couch', points: 4 },
     { text: 'We have different habits, which sometimes causes friction', points: 3 },
     { text: 'My partner goes to an office, so I have the place to myself during the day', points: 1 }
   ]},
@@ -928,10 +928,7 @@ const app = {
         
         document.getElementById('leaderboard-section').style.display = 'block';
         
-        // This fires immediately to fetch data, but renders personal score NO MATTER WHAT.
         app.fetchLeaderboard();
-
-        // Sends data to sheet in background
         app.submitToDatabase(title);
     } catch (error) {
         console.error("Critical rendering error:", error);
@@ -999,7 +996,6 @@ const app = {
       const myName = app.state.playerName.toUpperCase() || 'YOU';
       const myState = document.getElementById('result-title').innerText;
 
-      // New function that guarantees the user's personal score is rendered immediately
       const renderRank = (score, rank, total) => {
         rankDisplay.innerHTML = `
             <div style="text-align:center; padding: 1.2rem; background: #000; color: #fff; border: var(--border); font-family: var(--font-mono); font-size: 1.4rem; margin-bottom: 1.5rem; font-weight: bold; transform: rotate(-1deg); box-shadow: var(--shadow);">
@@ -1015,14 +1011,11 @@ const app = {
         .then(data => {
             const validData = (data || []).filter(d => d.score !== undefined && d.score !== null && !isNaN(parseInt(d.score)));
             
-            // PREVENT DUPLICATES: Check if the database already caught the new score
             const alreadyInDB = validData.findIndex(d => d.name.toUpperCase() === myName && parseInt(d.score) === myScore);
             
             if (alreadyInDB !== -1) {
-                // DB was fast! Just add (YOU) to the existing entry so it highlights
                 validData[alreadyInDB].name = myName + " (YOU)";
             } else {
-                // DB is lagging, manually inject it so the user isn't left out
                 validData.push({
                     name: myName + " (YOU)",
                     score: myScore,
@@ -1030,13 +1023,10 @@ const app = {
                 });
             }
 
-            // Sort everyone by score descending (worst collapse first)
             validData.sort((a, b) => parseInt(b.score) - parseInt(a.score));
             
-            // Render Top 5
             const top5 = validData.slice(0, 5);
             lbList.innerHTML = top5.map((item, index) => {
-                // Highlight the user's current session row in the top 5
                 const isMe = item.name.includes('(YOU)') ? 'color:var(--accent-lime); background:#111;' : '';
                 return `<li style="${isMe}">
                     <span>#${index+1} ${item.name}</span>
@@ -1044,7 +1034,6 @@ const app = {
                 </li>`;
             }).join('');
             
-            // Calculate exact rank of the injected session
             const myRank = validData.findIndex(d => d.name === myName + " (YOU)" && parseInt(d.score) === myScore) + 1;
             const totalCohortSize = validData.length;
             
@@ -1052,7 +1041,6 @@ const app = {
         })
         .catch(err => { 
             console.error("Leaderboard Error: ", err);
-            // Fallback: If DB fails to load, show just the user
             lbList.innerHTML = `<li style="color:var(--accent-lime); background:#111;">
                 <span>#1 ${myName} (YOU)</span>
                 <span>${myState} [${myScore}pts]</span>
@@ -1060,7 +1048,7 @@ const app = {
             renderRank(myScore, 1, 1);
         });
   },
-  },
+
   restart() {
     app.state = {
       segment:null,living:null,worktype:null,bedlevel:null,
