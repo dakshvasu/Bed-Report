@@ -994,7 +994,10 @@ const app = {
   fetchLeaderboard() {
       const lbList = document.getElementById('leaderboard-list');
       const rankDisplay = document.getElementById('user-rank-display');
+      
       const myScore = app.state.totalScore;
+      const myName = app.state.playerName.toUpperCase() || 'YOU';
+      const myState = document.getElementById('result-title').innerText;
 
       // New function that guarantees the user's personal score is rendered immediately
       const renderRank = (score, rank, total) => {
@@ -1010,41 +1013,46 @@ const app = {
       fetch(API_URL)
         .then(response => response.json())
         .then(data => {
-            if(!data || data.length === 0) { 
-                lbList.innerHTML = `<li><div style="text-align:center; width:100%;">NO OTHER ENTRIES YET.</div></li>`; 
-                renderRank(myScore, 1, 1);
-                return; 
-            }
+            // Filter valid database data
+            const validData = (data || []).filter(d => d.score !== undefined && d.score !== null && !isNaN(parseInt(d.score)));
+            
+            // INJECT CURRENT SESSION LOCALLY so it never misses the user
+            validData.push({
+                name: myName + " (YOU)",
+                score: myScore,
+                state: myState
+            });
 
-            const validData = data.filter(d => d.score !== undefined && d.score !== null && !isNaN(parseInt(d.score)));
+            // Sort everyone by score descending (worst collapse first)
             validData.sort((a, b) => parseInt(b.score) - parseInt(a.score));
             
+            // Render Top 5
             const top5 = validData.slice(0, 5);
-            lbList.innerHTML = top5.map((item, index) =>
-                `<li>
-                    <span>#${index+1} ${item.name || 'ANON'}</span>
+            lbList.innerHTML = top5.map((item, index) => {
+                // Highlight the user's current session row in the top 5
+                const isMe = item.name.includes('(YOU)') ? 'color:var(--accent-lime); background:#111;' : '';
+                return `<li style="${isMe}">
+                    <span>#${index+1} ${item.name}</span>
                     <span>${item.state || 'DONE'} [${item.score}pts]</span>
-                </li>`
-            ).join('');
+                </li>`;
+            }).join('');
             
-            let myRank = 1;
-            for(let i = 0; i < validData.length; i++) {
-                if(parseInt(validData[i].score) > myScore) {
-                    myRank++;
-                } else {
-                    break;
-                }
-            }
-            const totalCohortSize = validData.length + 1;
+            // Calculate exact rank of the injected session
+            const myRank = validData.findIndex(d => d.name === myName + " (YOU)" && d.score === myScore) + 1;
+            const totalCohortSize = validData.length;
+            
             renderRank(myScore, myRank, totalCohortSize);
         })
         .catch(err => { 
             console.error("Leaderboard Error: ", err);
-            lbList.innerHTML = `<li><div style="color:red; font-size:1.0rem; text-align:center;">DATABASE LOADING ERROR.</div></li>`; 
+            // Fallback: If DB fails to load, show just the user
+            lbList.innerHTML = `<li style="color:var(--accent-lime); background:#111;">
+                <span>#1 ${myName} (YOU)</span>
+                <span>${myState} [${myScore}pts]</span>
+            </li>`; 
             renderRank(myScore, 1, 1);
         });
   },
-
   restart() {
     app.state = {
       segment:null,living:null,worktype:null,bedlevel:null,
