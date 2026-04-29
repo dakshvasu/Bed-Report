@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>THE BED REPORT</title>
-    <meta name="description" content="Your bedroom knows exactly what you've been doing. Open the file.">
+    <meta name="description" content="Take the test, get your diagnosis, and see how you rank.">
     <meta property="og:title" content="THE BED REPORT">
-    <meta property="og:description" content="Your bedroom has a file on you. Open it.">
+    <meta property="og:description" content="Take the test, get your diagnosis, and see how you rank.">
     <meta property="og:type" content="website">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;700&family=Playfair+Display:wght@400;700&family=VT323&display=swap" rel="stylesheet">
 <style>
@@ -106,7 +106,7 @@ h2{font-family:var(--font-head);font-size:2.6rem;line-height:1.05;margin-bottom:
 /* === ENTRY TILES === */
 .entry-header{text-align:center;margin-bottom:1.5rem}
 .entry-header h1{font-size:6rem;color:#000;text-shadow:3px 3px 0px #fff,6px 6px 0px #000;transform:rotate(-2deg); margin: 0;}
-.entry-body{font-size:1.15rem;font-weight:500;line-height:1.5;margin-bottom:2.5rem;max-width:520px;margin-left:auto;margin-right:auto;text-align:center;}
+.entry-body{text-align:center; margin-bottom:2.5rem;}
 .tiles-grid{display:flex;flex-direction:column;gap:16px;margin-bottom:1rem}
 .tile{
   border:var(--border);padding:1.5rem;cursor:pointer;transition:all .15s;position:relative;overflow:hidden;
@@ -214,14 +214,21 @@ body.segment-senior #result-title{color:#C4522A;text-shadow:3px 3px 0px #1C1C1C;
   <div class="progress-wrapper"><div class="progress-fill" id="progress-bar"></div></div>
   <div class="content-container">
 
-    <div id="screen-entry" class="screen active" style="text-align:center">
+    <div id="screen-entry" class="screen active">
       <div class="entry-header">
         <h1>THE BED<br>REPORT</h1>
       </div>
-      <div class="stamp">CASE OPEN</div>
+      <div style="text-align:center;"><div class="stamp">CASE OPEN</div></div>
+      
       <div class="entry-body">
-        Your bedroom knows exactly what you've been doing. It's time to open the file.<br><br>Take the test, get your diagnosis, and see how you rank against everyone else who dared to face their habits.<br><br><strong>Select your age group to begin.</strong>
+        <div style="background:#000; color:var(--accent-lime); padding:1.2rem; border:var(--border); font-family:var(--font-mono); font-size:1.4rem; margin-bottom:2rem; transform:rotate(-1deg); box-shadow:var(--shadow); line-height: 1.3;">
+            TAKE THE TEST.<br>GET YOUR DIAGNOSIS.<br>SEE HOW YOU RANK AGAINST EVERYONE ELSE WHO DARED TO FACE THEIR HABITS.
+        </div>
+        <strong style="font-size:1.5rem; text-transform:uppercase; background:var(--accent); color:#fff; padding:8px 16px; border:var(--border); display:inline-block; transform:rotate(1deg); box-shadow:4px 4px 0px #000;">
+            SELECT YOUR AGE GROUP TO BEGIN ↓
+        </strong>
       </div>
+
       <div class="tiles-grid">
         <div class="tile tile-student" onclick="app.selectSegment('student')">
           <div class="tile-label">18–24</div>
@@ -534,7 +541,7 @@ function getNextBatch(phase, state) {
 }
 
 const STATE_NAMES = {
-  student:['RAW','TOASTED','MED RARE','WELL DONE','CHARCOAL'],
+  student:['INTACT','AT RISK','COMPROMISED','COLLAPSED','CRITICAL'],
   adult:['SOLID','SLIPPING','BLURRED','COLLAPSED','CRITICAL'],
   senior:['STABLE','DRIFTING','CHRONIC','EMBEDDED','CASE STUDY']
 };
@@ -913,17 +920,18 @@ const app = {
         const title = getResultTitle(s.segment, level);
         const diag = getDiagnosis(s.segment, level, s);
         
-        // Share text does not contain raw URLs visually anymore
         const shareCopy = getShareCopy(s.segment, title, s.totalScore);
         
         document.getElementById('result-title').innerText = title;
         document.getElementById('result-diagnosis').innerText = diag;
         document.getElementById('share-copy').innerText = shareCopy;
         
-        // Show leaderboard to everyone
         document.getElementById('leaderboard-section').style.display = 'block';
+        
+        // This fires immediately to fetch data, but renders personal score NO MATTER WHAT.
         app.fetchLeaderboard();
 
+        // Sends data to sheet in background
         app.submitToDatabase(title);
     } catch (error) {
         console.error("Critical rendering error:", error);
@@ -956,23 +964,18 @@ const app = {
     const s = app.state; const a = s.answers;
     const gt = id => { const v=a[id]; if(!v) return ''; if(Array.isArray(v)) return v.map(x=>x.text).join(' | '); return v.text||''; };
     
-    // The massive 41-point payload
     const payload = {
       timestamp: new Date().toISOString(), name: s.playerName, segment: s.segment,
       score: s.totalScore, result_state: resultTitle,
       living_type: s.living||'', work_type: s.worktype||'', bed_level: s.bedlevel||'', symptom_count: s.symptomLoad,
-      // Universals
       u1: gt('u1'), u2: gt('u2'), u3: gt('u3'), u4: gt('u4'),
-      // Living Branches
       h1: gt('h1'), h2: gt('h2'), h3: gt('h3'),
       f1: gt('f1'), f2: gt('f2'), f3: gt('f3'),
       a1: gt('a1'), a2: gt('a2'), a3: gt('a3'),
       s1: gt('s1'), s2: gt('s2'), s3: gt('s3'),
-      // Work Branches
       st1: gt('st1'), st2: gt('st2'), st3: gt('st3'),
       r1: gt('r1'), r2: gt('r2'), r3: gt('r3'),
       hy1: gt('hy1'), hy2: gt('hy2'), hy3: gt('hy3'),
-      // Specials & Closing
       p_pet: gt('p_pet'), p_partner: gt('p_partner'), p_kids: gt('p_kids'),
       sym1: gt('sym1'),
       cl1: gt('cl1'), cl2: gt('cl2'), cl3: gt('cl3')
@@ -991,20 +994,31 @@ const app = {
   fetchLeaderboard() {
       const lbList = document.getElementById('leaderboard-list');
       const rankDisplay = document.getElementById('user-rank-display');
-      
+      const myScore = app.state.totalScore;
+
+      // New function that guarantees the user's personal score is rendered immediately
+      const renderRank = (score, rank, total) => {
+        rankDisplay.innerHTML = `
+            <div style="text-align:center; padding: 1.2rem; background: #000; color: #fff; border: var(--border); font-family: var(--font-mono); font-size: 1.4rem; margin-bottom: 1.5rem; font-weight: bold; transform: rotate(-1deg); box-shadow: var(--shadow);">
+                <div style="color:var(--accent-lime); font-size:1rem; margin-bottom: 0.5rem;">— YOUR PERFORMANCE FILE —</div>
+                SCORE DETECTED: <span style="color:var(--accent); font-size: 1.8rem;">${score} pts</span><br>
+                RANKING: <span style="color:var(--accent); font-size: 1.8rem;">#${rank}</span> out of ${total}
+            </div>`;
+        rankDisplay.style.display = 'block';
+      };
+
       fetch(API_URL)
         .then(response => response.json())
         .then(data => {
             if(!data || data.length === 0) { 
-                lbList.innerHTML = `<li><div style="text-align:center; width:100%;">NO ENTRIES YET.</div></li>`; 
+                lbList.innerHTML = `<li><div style="text-align:center; width:100%;">NO OTHER ENTRIES YET.</div></li>`; 
+                renderRank(myScore, 1, 1);
                 return; 
             }
 
-            // Filter out empty rows and sort by score descending (worst collapse first)
             const validData = data.filter(d => d.score !== undefined && d.score !== null && !isNaN(parseInt(d.score)));
             validData.sort((a, b) => parseInt(b.score) - parseInt(a.score));
             
-            // Render Top 5
             const top5 = validData.slice(0, 5);
             lbList.innerHTML = top5.map((item, index) =>
                 `<li>
@@ -1013,11 +1027,7 @@ const app = {
                 </li>`
             ).join('');
             
-            // Calculate User's Rank
-            const myScore = app.state.totalScore;
             let myRank = 1;
-            
-            // Compare user's score to the existing sorted database to find their exact rank placement
             for(let i = 0; i < validData.length; i++) {
                 if(parseInt(validData[i].score) > myScore) {
                     myRank++;
@@ -1025,21 +1035,13 @@ const app = {
                     break;
                 }
             }
-            
-            // The total cohort size includes the user's new entry (+1)
             const totalCohortSize = validData.length + 1;
-
-            rankDisplay.innerHTML = `
-                <div style="text-align:center; padding: 1.2rem; background: #000; color: #fff; border: var(--border); font-family: var(--font-mono); font-size: 1.4rem; margin-bottom: 1.5rem; font-weight: bold; transform: rotate(-1deg); box-shadow: var(--shadow);">
-                    <div style="color:var(--accent-lime); font-size:1rem; margin-bottom: 0.5rem;">— YOUR PERFORMANCE FILE —</div>
-                    SCORE DETECTED: <span style="color:var(--accent); font-size: 1.8rem;">${myScore} pts</span><br>
-                    RANKING: <span style="color:var(--accent); font-size: 1.8rem;">#${myRank}</span> out of ${totalCohortSize}
-                </div>`;
-            rankDisplay.style.display = 'block';
+            renderRank(myScore, myRank, totalCohortSize);
         })
         .catch(err => { 
             console.error("Leaderboard Error: ", err);
-            lbList.innerHTML = `<li><div style="color:red; font-size:1.0rem; text-align:center;">DATABASE UNAVAILABLE.</div></li>`; 
+            lbList.innerHTML = `<li><div style="color:red; font-size:1.0rem; text-align:center;">DATABASE LOADING ERROR.</div></li>`; 
+            renderRank(myScore, 1, 1);
         });
   },
 
