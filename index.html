@@ -1013,15 +1013,22 @@ const app = {
       fetch(API_URL)
         .then(response => response.json())
         .then(data => {
-            // Filter valid database data
             const validData = (data || []).filter(d => d.score !== undefined && d.score !== null && !isNaN(parseInt(d.score)));
             
-            // INJECT CURRENT SESSION LOCALLY so it never misses the user
-            validData.push({
-                name: myName + " (YOU)",
-                score: myScore,
-                state: myState
-            });
+            // PREVENT DUPLICATES: Check if the database already caught the new score
+            const alreadyInDB = validData.findIndex(d => d.name.toUpperCase() === myName && parseInt(d.score) === myScore);
+            
+            if (alreadyInDB !== -1) {
+                // DB was fast! Just add (YOU) to the existing entry so it highlights
+                validData[alreadyInDB].name = myName + " (YOU)";
+            } else {
+                // DB is lagging, manually inject it so the user isn't left out
+                validData.push({
+                    name: myName + " (YOU)",
+                    score: myScore,
+                    state: myState
+                });
+            }
 
             // Sort everyone by score descending (worst collapse first)
             validData.sort((a, b) => parseInt(b.score) - parseInt(a.score));
@@ -1038,7 +1045,7 @@ const app = {
             }).join('');
             
             // Calculate exact rank of the injected session
-            const myRank = validData.findIndex(d => d.name === myName + " (YOU)" && d.score === myScore) + 1;
+            const myRank = validData.findIndex(d => d.name === myName + " (YOU)" && parseInt(d.score) === myScore) + 1;
             const totalCohortSize = validData.length;
             
             renderRank(myScore, myRank, totalCohortSize);
@@ -1052,6 +1059,7 @@ const app = {
             </li>`; 
             renderRank(myScore, 1, 1);
         });
+  },
   },
   restart() {
     app.state = {
