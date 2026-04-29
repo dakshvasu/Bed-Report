@@ -956,19 +956,34 @@ const app = {
     const s = app.state; const a = s.answers;
     const gt = id => { const v=a[id]; if(!v) return ''; if(Array.isArray(v)) return v.map(x=>x.text).join(' | '); return v.text||''; };
     
+    // The massive 41-point payload
     const payload = {
-      timestamp: new Date().toISOString(), name: s.playerName,
-      segment: s.segment, age_group: s.segment,
-      living: s.living||'', worktype: s.worktype||'', bedlevel: s.bedlevel||'',
-      symptom_count: s.symptomLoad, awareness: s.awareness||'',
-      gender_signal: s.genderSignal||'', has_partner: s.partner, has_children: s.children,
+      timestamp: new Date().toISOString(), name: s.playerName, segment: s.segment,
       score: s.totalScore, result_state: resultTitle,
-      u1_living: gt('u1'), u2_worktype: gt('u2'), u3_bedlevel: gt('u3'), u4_symptoms: gt('u4')
+      living_type: s.living||'', work_type: s.worktype||'', bed_level: s.bedlevel||'', symptom_count: s.symptomLoad,
+      // Universals
+      u1: gt('u1'), u2: gt('u2'), u3: gt('u3'), u4: gt('u4'),
+      // Living Branches
+      h1: gt('h1'), h2: gt('h2'), h3: gt('h3'),
+      f1: gt('f1'), f2: gt('f2'), f3: gt('f3'),
+      a1: gt('a1'), a2: gt('a2'), a3: gt('a3'),
+      s1: gt('s1'), s2: gt('s2'), s3: gt('s3'),
+      // Work Branches
+      st1: gt('st1'), st2: gt('st2'), st3: gt('st3'),
+      r1: gt('r1'), r2: gt('r2'), r3: gt('r3'),
+      hy1: gt('hy1'), hy2: gt('hy2'), hy3: gt('hy3'),
+      // Specials & Closing
+      p_pet: gt('p_pet'), p_partner: gt('p_partner'), p_kids: gt('p_kids'),
+      sym1: gt('sym1'),
+      cl1: gt('cl1'), cl2: gt('cl2'), cl3: gt('cl3')
     };
 
     try { 
-        fetch(API_URL, {method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)})
-        .catch(e => console.log('Database transmission error', e));
+        fetch(API_URL, {
+            method:'POST', mode:'no-cors',
+            headers:{'Content-Type':'text/plain;charset=utf-8'},
+            body:JSON.stringify(payload)
+        }).catch(e => console.log('Database transmission error', e));
     }
     catch(e) { console.log('DB Post Error', e); }
   },
