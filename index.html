@@ -215,7 +215,18 @@ body.segment-senior #result-title{color:#C4522A;text-shadow:3px 3px 0px #1C1C1C;
   <div class="progress-wrapper"><div class="progress-fill" id="progress-bar"></div></div>
   <div class="content-container">
 
-    <div id="screen-entry" class="screen active">
+    <!-- THE LOCK SCREEN (Hidden by default, shown via JS if cookie exists) -->
+    <div id="screen-locked" class="screen" style="padding:4rem 1rem; text-align:center;">
+        <div class="stamp" style="font-size: 3.5rem; transform: rotate(-2deg); margin-bottom: 2rem;">LOCKED</div>
+        <h2 style="font-size: 2.8rem; margin-bottom: 1rem;">SUBMISSION RECORDED</h2>
+        <p style="font-size: 1.3rem; font-weight: 500; font-family: var(--font-body); line-height: 1.5; border: var(--border); padding: 1.5rem; background: var(--card-bg); box-shadow: var(--shadow);">
+            Our database shows you have already submitted your Spatial Audit from this device.<br><br>
+            To preserve data integrity and prevent duplicate entries, multiple submissions have been disabled.
+        </p>
+    </div>
+
+    <!-- Note: removed "active" class here, it is added by JS on load if not locked -->
+    <div id="screen-entry" class="screen">
       <div class="entry-header">
         <h1>THE BED<br>REPORT</h1>
       </div>
@@ -291,7 +302,7 @@ body.segment-senior #result-title{color:#C4522A;text-shadow:3px 3px 0px #1C1C1C;
         <button class="primary-btn share-btn" id="share-btn" onclick="app.shareWhatsApp()">SHARE DIAGNOSIS</button>
         <button class="primary-btn secondary" id="copy-btn" onclick="app.copyShareLink()">COPY LINK</button>
       </div>
-      <button class="primary-btn secondary" onclick="app.restart()" style="margin-top:.5rem">START OVER</button>
+      <!-- Removed the Restart Button here -->
     </div>
 
   </div>
@@ -472,7 +483,7 @@ const Q = {
   ]},
   p_partner: { id: 'p_partner', type: 'radio', title: "Sharing a living space requires compromise. How does living with a partner affect your workspace boundaries?", condition: s => s.partner === true, options: [
     { text: 'We keep each other disciplined with designated workspaces', points: 1 },
-    { text: 'We উভয় ended up normalizing working from the bed/couch', points: 4 },
+    { text: 'We both ended up normalizing working from the bed/couch', points: 4 },
     { text: 'We have different habits, which sometimes causes friction', points: 3 },
     { text: 'My partner goes to an office, so I have the place to myself during the day', points: 1 }
   ]},
@@ -675,6 +686,15 @@ const app = {
   },
 
   init() {
+    // 🔥 THE DEVICE LOCK CHECK 🔥
+    if (localStorage.getItem("bedReportTaken") === "true") {
+        document.getElementById('screen-locked').classList.add('active');
+        document.getElementById('marquee-text').textContent = "// ACCESS DENIED // RECORD ALREADY LOGGED //";
+        return; // Prevent the rest of the app from launching
+    } else {
+        document.getElementById('screen-entry').classList.add('active');
+    }
+
     const nameInput = document.getElementById('user-name-input');
     const startBtn = document.getElementById('start-btn');
     nameInput.addEventListener('input', e => {
@@ -962,10 +982,12 @@ const app = {
     const s = app.state; const a = s.answers;
     const gt = id => { const v=a[id]; if(!v) return ''; if(Array.isArray(v)) return v.map(x=>x.text).join(' | '); return v.text||''; };
     
+    // 🔥 PASSIVE DATA HARVESTING ADDED HERE 🔥
     const payload = {
       timestamp: new Date().toISOString(), name: s.playerName, segment: s.segment,
       score: s.totalScore, result_state: resultTitle,
       living_type: s.living||'', work_type: s.worktype||'', bed_level: s.bedlevel||'', symptom_count: s.symptomLoad,
+      device_info: navigator.userAgent, 
       u1: gt('u1'), u2: gt('u2'), u3: gt('u3'), u4: gt('u4'),
       h1: gt('h1'), h2: gt('h2'), h3: gt('h3'),
       f1: gt('f1'), f2: gt('f2'), f3: gt('f3'),
@@ -984,6 +1006,9 @@ const app = {
             method:'POST', mode:'no-cors',
             headers:{'Content-Type':'text/plain;charset=utf-8'},
             body:JSON.stringify(payload)
+        }).then(() => {
+            // 🔥 LOCK THE DEVICE ONCE SECURELY SUBMITTED 🔥
+            localStorage.setItem("bedReportTaken", "true");
         }).catch(e => console.log('Database transmission error', e));
     }
     catch(e) { console.log('DB Post Error', e); }
@@ -1048,25 +1073,6 @@ const app = {
             </li>`; 
             renderRank(myScore, 1, 1);
         });
-  },
-
-  restart() {
-    app.state = {
-      segment:null,living:null,worktype:null,bedlevel:null,
-      symptomLoad:0,awareness:null,genderSignal:null,
-      partner:false,children:false,a3trigger:false,
-      totalScore:0,playerName:'',currentIndex:0,
-      questionQueue:[],answers:{},answerKeys:{},
-      isActive:false,questionNumber:0,phase:'universal',phaseIndex:0, history:[]
-    };
-    document.body.className = '';
-    document.getElementById('user-name-input').value = '';
-    document.getElementById('start-btn').style.display = 'none';
-    document.getElementById('progress-bar').style.width = '0%';
-    document.getElementById('leaderboard-section').style.display = 'none';
-    document.getElementById('user-rank-display').style.display = 'none';
-    document.getElementById('marquee-text').textContent = MARQUEE.entry;
-    app.transition('screen-result', 'screen-entry');
   }
 };
 
