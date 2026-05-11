@@ -215,6 +215,16 @@ body.segment-senior #result-title{color:#C4522A;text-shadow:3px 3px 0px #1C1C1C;
   <div class="progress-wrapper"><div class="progress-fill" id="progress-bar"></div></div>
   <div class="content-container">
 
+    <!-- THE LOCK SCREEN (Hidden by default, shown via JS if cookie exists) -->
+    <div id="screen-locked" class="screen" style="padding:4rem 1rem; text-align:center;">
+        <div class="stamp" style="font-size: 3.5rem; transform: rotate(-2deg); margin-bottom: 2rem;">LOCKED</div>
+        <h2 style="font-size: 2.8rem; margin-bottom: 1rem;">SUBMISSION RECORDED</h2>
+        <p style="font-size: 1.3rem; font-weight: 500; font-family: var(--font-body); line-height: 1.5; border: var(--border); padding: 1.5rem; background: var(--card-bg); box-shadow: var(--shadow);">
+            Our database shows you have already submitted your Spatial Audit from this device.<br><br>
+            To preserve data integrity and prevent duplicate entries, multiple submissions have been disabled.
+        </p>
+    </div>
+
     <!-- Note: removed "active" class here, it is added by JS on load if not locked -->
     <div id="screen-entry" class="screen">
       <div class="entry-header">
@@ -676,7 +686,14 @@ const app = {
   },
 
   init() {
-    document.getElementById('screen-entry').classList.add('active');
+    // 🔥 THE DEVICE LOCK CHECK 🔥
+    if (localStorage.getItem("bedReportTaken") === "true") {
+        document.getElementById('screen-locked').classList.add('active');
+        document.getElementById('marquee-text').textContent = "// ACCESS DENIED // RECORD ALREADY LOGGED //";
+        return; // Prevent the rest of the app from launching
+    } else {
+        document.getElementById('screen-entry').classList.add('active');
+    }
 
     const nameInput = document.getElementById('user-name-input');
     const startBtn = document.getElementById('start-btn');
@@ -989,6 +1006,9 @@ const app = {
             method:'POST', mode:'no-cors',
             headers:{'Content-Type':'text/plain;charset=utf-8'},
             body:JSON.stringify(payload)
+        }).then(() => {
+            // 🔥 LOCK THE DEVICE ONCE SECURELY SUBMITTED 🔥
+            localStorage.setItem("bedReportTaken", "true");
         }).catch(e => console.log('Database transmission error', e));
     }
     catch(e) { console.log('DB Post Error', e); }
@@ -1060,3 +1080,5 @@ window.onload = app.init;
 </script>
 </body>
 </html>
+
+
