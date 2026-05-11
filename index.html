@@ -1,74 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE BED REPORT</title>
-    <meta name="description" content="Take the test, get your diagnosis, and see how you rank.">
-    <meta property="og:title" content="THE BED REPORT">
-    <meta property="og:description" content="Take the test, get your diagnosis, and see how you rank.">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://dakshvasu.github.io/Bed-Report/invitee.jpg">
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;700&family=Playfair+Display:wght@400;700&family=VT323&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE BED REPORT</title>
+    <meta name="description" content="Take the test, get your diagnosis, and see how you rank.">
+    <meta property="og:title" content="THE BED REPORT">
+    <meta property="og:description" content="Take the test, get your diagnosis, and see how you rank.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://dakshvasu.github.io/Bed-Report/invitee.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;700&family=Playfair+Display:wght@400;700&family=VT323&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#F0EDE5;--text:#000;--accent:#E8003D;--card-bg:#fff;
-  --border-w:4px;--border:4px solid #000;--shadow:6px 6px 0px #000;--shadow-hover:12px 12px 0px #000;
-  --font-body:'Space Grotesk',sans-serif;--font-head:'Bebas Neue',sans-serif;--font-mono:'VT323',monospace;
-  --accent-secondary:#003cff;--accent-lime:#00ff00;--marquee-bg:#000;--marquee-color:#00ff00;
-  --option-hover-bg:#003cff;--option-hover-color:#fff;--option-selected-bg:#ff0055;
-  --progress-bg:repeating-linear-gradient(45deg,#ff0055,#ff0055 15px,#ff8c00 15px,#ff8c00 30px);
-  --body-pattern:none;--tag-bg:#000;--tag-color:#FFD900;--tag-shadow:4px 4px 0px #ff0055;
-  --diag-bg:#000;--diag-color:#fff;
-  --input-font:'Bebas Neue',sans-serif;
+  --bg:#F0EDE5;--text:#000;--accent:#E8003D;--card-bg:#fff;
+  --border-w:4px;--border:4px solid #000;--shadow:6px 6px 0px #000;--shadow-hover:12px 12px 0px #000;
+  --font-body:'Space Grotesk',sans-serif;--font-head:'Bebas Neue',sans-serif;--font-mono:'VT323',monospace;
+  --accent-secondary:#003cff;--accent-lime:#00ff00;--marquee-bg:#000;--marquee-color:#00ff00;
+  --option-hover-bg:#003cff;--option-hover-color:#fff;--option-selected-bg:#ff0055;
+  --progress-bg:repeating-linear-gradient(45deg,#ff0055,#ff0055 15px,#ff8c00 15px,#ff8c00 30px);
+  --body-pattern:none;--tag-bg:#000;--tag-color:#FFD900;--tag-shadow:4px 4px 0px #ff0055;
+  --diag-bg:#000;--diag-color:#fff;
+  --input-font:'Bebas Neue',sans-serif;
 }
 
 /* === THEMES === */
 body.segment-student{
-  --bg:#FFD900;--text:#000;--accent:#ff0055;--accent-secondary:#003cff;--accent-lime:#00ff00;
-  --border-w:4px;--border:4px solid #000;--shadow:6px 6px 0px #000;--shadow-hover:12px 12px 0px #000;
-  --font-body:'Space Grotesk',sans-serif;--marquee-bg:#000;--marquee-color:#00ff00;
-  --option-hover-bg:#003cff;--option-hover-color:#fff;--option-selected-bg:#ff0055;
-  --progress-bg:repeating-linear-gradient(45deg,#ff0055,#ff0055 15px,#ff8c00 15px,#ff8c00 30px);
-  --body-pattern:radial-gradient(#000 2px,transparent 2px);background-size:24px 24px;
-  --tag-bg:#000;--tag-color:#FFD900;--tag-shadow:4px 4px 0px #ff0055;
-  --diag-bg:#000;--diag-color:#fff;--input-font:'Bebas Neue',sans-serif;
+  --bg:#FFD900;--text:#000;--accent:#ff0055;--accent-secondary:#003cff;--accent-lime:#00ff00;
+  --border-w:4px;--border:4px solid #000;--shadow:6px 6px 0px #000;--shadow-hover:12px 12px 0px #000;
+  --font-body:'Space Grotesk',sans-serif;--marquee-bg:#000;--marquee-color:#00ff00;
+  --option-hover-bg:#003cff;--option-hover-color:#fff;--option-selected-bg:#ff0055;
+  --progress-bg:repeating-linear-gradient(45deg,#ff0055,#ff0055 15px,#ff8c00 15px,#ff8c00 30px);
+  --body-pattern:radial-gradient(#000 2px,transparent 2px);background-size:24px 24px;
+  --tag-bg:#000;--tag-color:#FFD900;--tag-shadow:4px 4px 0px #ff0055;
+  --diag-bg:#000;--diag-color:#fff;--input-font:'Bebas Neue',sans-serif;
 }
 body.segment-adult{
-  --bg:#F5F5F0;--text:#000;--accent:#E8003D;--accent-secondary:#E8003D;--accent-lime:#E8003D;
-  --border-w:4px;--border:4px solid #000;--shadow:4px 4px 0px #000;--shadow-hover:8px 8px 0px #000;
-  --font-body:'IBM Plex Mono',monospace;--marquee-bg:#000;--marquee-color:#E8003D;
-  --option-hover-bg:#E8003D;--option-hover-color:#fff;--option-selected-bg:#E8003D;
-  --progress-bg:#E8003D;
-  --body-pattern:repeating-linear-gradient(transparent,transparent 27px,#e0e0d8 27px,#e0e0d8 28px);
-  --tag-bg:#000;--tag-color:#E8003D;--tag-shadow:4px 4px 0px #E8003D;
-  --diag-bg:#1a1a1a;--diag-color:#f0f0f0;--input-font:'IBM Plex Mono',monospace;
+  --bg:#F5F5F0;--text:#000;--accent:#E8003D;--accent-secondary:#E8003D;--accent-lime:#E8003D;
+  --border-w:4px;--border:4px solid #000;--shadow:4px 4px 0px #000;--shadow-hover:8px 8px 0px #000;
+  --font-body:'IBM Plex Mono',monospace;--marquee-bg:#000;--marquee-color:#E8003D;
+  --option-hover-bg:#E8003D;--option-hover-color:#fff;--option-selected-bg:#E8003D;
+  --progress-bg:#E8003D;
+  --body-pattern:repeating-linear-gradient(transparent,transparent 27px,#e0e0d8 27px,#e0e0d8 28px);
+  --tag-bg:#000;--tag-color:#E8003D;--tag-shadow:4px 4px 0px #E8003D;
+  --diag-bg:#1a1a1a;--diag-color:#f0f0f0;--input-font:'IBM Plex Mono',monospace;
 }
 body.segment-senior{
-  --bg:#F7F2E8;--text:#1C1C1C;--accent:#C4522A;--accent-secondary:#C4522A;--accent-lime:#C4522A;
-  --border-w:3px;--border:3px solid #1C1C1C;--shadow:4px 4px 0px #1C1C1C;--shadow-hover:8px 8px 0px #1C1C1C;
-  --font-body:'Playfair Display',serif;--marquee-bg:#1C1C1C;--marquee-color:#C4522A;
-  --option-hover-bg:#C4522A;--option-hover-color:#fff;--option-selected-bg:#C4522A;
-  --progress-bg:#C4522A;
-  --body-pattern:repeating-linear-gradient(45deg,#e8e3d8 0px,#e8e3d8 1px,transparent 1px,transparent 8px),repeating-linear-gradient(-45deg,#e8e3d8 0px,#e8e3d8 1px,transparent 1px,transparent 8px);
-  --tag-bg:#1C1C1C;--tag-color:#C4522A;--tag-shadow:4px 4px 0px #C4522A;
-  --diag-bg:#1C1C1C;--diag-color:#F7F2E8;--input-font:'Playfair Display',serif;
+  --bg:#F7F2E8;--text:#1C1C1C;--accent:#C4522A;--accent-secondary:#C4522A;--accent-lime:#C4522A;
+  --border-w:3px;--border:3px solid #1C1C1C;--shadow:4px 4px 0px #1C1C1C;--shadow-hover:8px 8px 0px #1C1C1C;
+  --font-body:'Playfair Display',serif;--marquee-bg:#1C1C1C;--marquee-color:#C4522A;
+  --option-hover-bg:#C4522A;--option-hover-color:#fff;--option-selected-bg:#C4522A;
+  --progress-bg:#C4522A;
+  --body-pattern:repeating-linear-gradient(45deg,#e8e3d8 0px,#e8e3d8 1px,transparent 1px,transparent 8px),repeating-linear-gradient(-45deg,#e8e3d8 0px,#e8e3d8 1px,transparent 1px,transparent 8px);
+  --tag-bg:#1C1C1C;--tag-color:#C4522A;--tag-shadow:4px 4px 0px #C4522A;
+  --diag-bg:#1C1C1C;--diag-color:#F7F2E8;--input-font:'Playfair Display',serif;
 }
 
 /* === LAYOUT === */
 body{
-  font-family:var(--font-body);background-color:var(--bg);color:var(--text);
-  min-height:100vh;display:flex;justify-content:center;align-items:center;
-  overflow-x:hidden;padding:2rem 1rem;background-image:var(--body-pattern);
+  font-family:var(--font-body);background-color:var(--bg);color:var(--text);
+  min-height:100vh;display:flex;justify-content:center;align-items:center;
+  overflow-x:hidden;padding:2rem 1rem;background-image:var(--body-pattern);
 }
 #app-wrapper{
-  width:100%;max-width:720px;background:var(--card-bg);border:var(--border);
-  box-shadow:var(--shadow);position:relative;z-index:10;display:flex;flex-direction:column;
+  width:100%;max-width:720px;background:var(--card-bg);border:var(--border);
+  box-shadow:var(--shadow);position:relative;z-index:10;display:flex;flex-direction:column;
 }
 .os-bar{
-  background:var(--marquee-bg);color:var(--marquee-color);border-bottom:var(--border);
-  font-family:var(--font-mono);font-size:1.4rem;display:flex;overflow:hidden;padding:8px 0;text-transform:uppercase;
+  background:var(--marquee-bg);color:var(--marquee-color);border-bottom:var(--border);
+  font-family:var(--font-mono);font-size:1.4rem;display:flex;overflow:hidden;padding:8px 0;text-transform:uppercase;
 }
 .marquee{white-space:nowrap;animation:scrollText 18s linear infinite;padding-left:100%;font-weight:700;letter-spacing:2px}
 @keyframes scrollText{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
@@ -85,22 +85,22 @@ body{
 h1{font-family:var(--font-head);font-size:5.5rem;line-height:.85;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:2px}
 h2{font-family:var(--font-head);font-size:2.6rem;line-height:1.05;margin-bottom:1.5rem;letter-spacing:1px;text-transform:uppercase}
 .tag{
-  background:var(--tag-bg);color:var(--tag-color);padding:6px 14px;font-weight:700;font-size:1rem;
-  text-transform:uppercase;display:inline-block;border:3px solid var(--tag-color);
-  box-shadow:var(--tag-shadow);transform:rotate(-2deg);font-family:var(--font-head);letter-spacing:1px;
+  background:var(--tag-bg);color:var(--tag-color);padding:6px 14px;font-weight:700;font-size:1rem;
+  text-transform:uppercase;display:inline-block;border:3px solid var(--tag-color);
+  box-shadow:var(--tag-shadow);transform:rotate(-2deg);font-family:var(--font-head);letter-spacing:1px;
 }
 .stamp{
-  display:inline-block;border:4px solid #E8003D;color:#E8003D;font-family:var(--font-head);
-  font-size:1.8rem;padding:6px 20px;transform:rotate(-6deg);letter-spacing:3px;margin:1rem 0;opacity:.85;
-  box-shadow:0 0 0 2px #E8003D inset;
+  display:inline-block;border:4px solid #E8003D;color:#E8003D;font-family:var(--font-head);
+  font-size:1.8rem;padding:6px 20px;transform:rotate(-6deg);letter-spacing:3px;margin:1rem 0;opacity:.85;
+  box-shadow:0 0 0 2px #E8003D inset;
 }
 .q-header-row{
-  display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;
+  display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;
 }
 .back-btn{
-  background:none; border:none; font-family:var(--font-mono); font-size:1.3rem;
-  font-weight:700; cursor:pointer; text-decoration:underline; color:var(--text);
-  transition:opacity 0.2s; outline:none; -webkit-tap-highlight-color:transparent;
+  background:none; border:none; font-family:var(--font-mono); font-size:1.3rem;
+  font-weight:700; cursor:pointer; text-decoration:underline; color:var(--text);
+  transition:opacity 0.2s; outline:none; -webkit-tap-highlight-color:transparent;
 }
 .back-btn:hover{ opacity:0.6; }
 
@@ -110,8 +110,8 @@ h2{font-family:var(--font-head);font-size:2.6rem;line-height:1.05;margin-bottom:
 .entry-body{text-align:center; margin-bottom:2.5rem;}
 .tiles-grid{display:flex;flex-direction:column;gap:16px;margin-bottom:1rem}
 .tile{
-  border:var(--border);padding:1.5rem;cursor:pointer;transition:all .15s;position:relative;overflow:hidden;
-  -webkit-tap-highlight-color:transparent; text-align:center;
+  border:var(--border);padding:1.5rem;cursor:pointer;transition:all .15s;position:relative;overflow:hidden;
+  -webkit-tap-highlight-color:transparent; text-align:center;
 }
 .tile:active{transform:translate(4px,4px)!important;box-shadow:0 0 0 #000!important}
 .tile-label{font-family:var(--font-head);font-size:2.5rem;letter-spacing:1px;text-transform:uppercase; margin:0;}
@@ -127,26 +127,26 @@ h2{font-family:var(--font-head);font-size:2.6rem;line-height:1.05;margin-bottom:
 /* === INPUTS & BUTTONS === */
 .input-group{margin-bottom:2rem}
 input[type="text"]{
-  width:100%;background:#fff;border:var(--border);color:var(--text);font-size:2.2rem;
-  font-family:var(--input-font);text-transform:uppercase;padding:1.2rem;outline:none;
-  transition:all .2s;box-shadow:var(--shadow);-webkit-appearance:none;border-radius:0;
+  width:100%;background:#fff;border:var(--border);color:var(--text);font-size:2.2rem;
+  font-family:var(--input-font);text-transform:uppercase;padding:1.2rem;outline:none;
+  transition:all .2s;box-shadow:var(--shadow);-webkit-appearance:none;border-radius:0;
 }
 input[type="text"]:focus{transform:translate(-4px,-4px);box-shadow:var(--shadow-hover);background:#f8f8f8}
 .options-grid{display:flex;flex-direction:column;gap:14px;margin-bottom:2rem}
 .option-btn{
-  width:100%;text-align:left;background:#fff;color:var(--text);border:var(--border);
-  padding:1.1rem;font-size:1.1rem;font-weight:600;line-height:1.3;font-family:var(--font-body);
-  cursor:pointer;transition:all .1s;display:flex;align-items:center;gap:14px;
-  box-shadow:4px 4px 0px #000;-webkit-tap-highlight-color:transparent;outline:none;
+  width:100%;text-align:left;background:#fff;color:var(--text);border:var(--border);
+  padding:1.1rem;font-size:1.1rem;font-weight:600;line-height:1.3;font-family:var(--font-body);
+  cursor:pointer;transition:all .1s;display:flex;align-items:center;gap:14px;
+  box-shadow:4px 4px 0px #000;-webkit-tap-highlight-color:transparent;outline:none;
 }
 .key-hint{
-  background:#fff;border:var(--border);border-bottom-width:6px;padding:3px 10px;
-  font-family:var(--font-mono);font-size:1.4rem;font-weight:bold;color:#000;
-  transition:all .1s;box-shadow:2px 2px 0px #000;flex-shrink:0;
+  background:#fff;border:var(--border);border-bottom-width:6px;padding:3px 10px;
+  font-family:var(--font-mono);font-size:1.4rem;font-weight:bold;color:#000;
+  transition:all .1s;box-shadow:2px 2px 0px #000;flex-shrink:0;
 }
 @media(hover:hover){
-  .option-btn:hover{transform:translate(-4px,-4px);box-shadow:8px 8px 0px #000;background:var(--option-hover-bg);color:var(--option-hover-color)}
-  .option-btn:hover .key-hint{background:var(--bg);color:#000}
+  .option-btn:hover{transform:translate(-4px,-4px);box-shadow:8px 8px 0px #000;background:var(--option-hover-bg);color:var(--option-hover-color)}
+  .option-btn:hover .key-hint{background:var(--bg);color:#000}
 }
 .option-btn:active{transform:translate(4px,4px)!important;box-shadow:0 0 0 #000!important}
 .option-btn.selected{background:var(--option-selected-bg)!important;color:#fff!important;transform:translate(2px,2px);box-shadow:2px 2px 0px #000!important}
@@ -154,10 +154,10 @@ input[type="text"]:focus{transform:translate(-4px,-4px);box-shadow:var(--shadow-
 .option-btn.multi-mode.selected{outline:3px solid var(--accent);outline-offset:-3px}
 
 .primary-btn{
-  background:var(--accent);color:#fff;border:var(--border);padding:1.1rem 2rem;font-size:1.8rem;
-  font-weight:700;cursor:pointer;font-family:var(--font-head);letter-spacing:2px;margin-top:1rem;
-  transition:all .15s;text-transform:uppercase;width:100%;box-shadow:var(--shadow);
-  -webkit-tap-highlight-color:transparent;outline:none;display:block;
+  background:var(--accent);color:#fff;border:var(--border);padding:1.1rem 2rem;font-size:1.8rem;
+  font-weight:700;cursor:pointer;font-family:var(--font-head);letter-spacing:2px;margin-top:1rem;
+  transition:all .15s;text-transform:uppercase;width:100%;box-shadow:var(--shadow);
+  -webkit-tap-highlight-color:transparent;outline:none;display:block;
 }
 .primary-btn:active{transform:translate(6px,6px);box-shadow:0 0 0 #000}
 .primary-btn.secondary{background:#fff;color:#000;margin-top:1rem}
@@ -165,8 +165,8 @@ input[type="text"]:focus{transform:translate(-4px,-4px);box-shadow:var(--shadow-
 
 /* === RESULT COMPONENTS === */
 .warning-label{
-  background:var(--diag-bg);color:var(--diag-color);border:var(--border);box-shadow:var(--shadow);
-  padding:1.5rem;margin-bottom:1.5rem;transform:rotate(-1deg);
+  background:var(--diag-bg);color:var(--diag-color);border:var(--border);box-shadow:var(--shadow);
+  padding:1.5rem;margin-bottom:1.5rem;transform:rotate(-1deg);
 }
 .warning-title{font-family:var(--font-head);font-size:2rem;letter-spacing:1px;margin-bottom:.5rem;text-decoration:underline;text-decoration-thickness:4px}
 .warning-label p{font-size:1.1rem;font-weight:500;line-height:1.45;font-family:var(--font-body)}
@@ -187,12 +187,12 @@ body.segment-student .glitch-loader{text-shadow:4px 4px 0px #ff0055,-4px -4px 0p
 body.segment-adult .glitch-loader{text-shadow:3px 3px 0px #E8003D;color:#000}
 body.segment-senior .glitch-loader{text-shadow:3px 3px 0px #C4522A;color:#1C1C1C}
 @keyframes shake{
-  0%{transform:translate(2px,2px) rotate(0deg)}10%{transform:translate(-2px,-3px) rotate(-1deg)}
-  20%{transform:translate(-4px,0) rotate(1deg)}30%{transform:translate(4px,3px) rotate(0deg)}
-  40%{transform:translate(2px,-2px) rotate(1deg)}50%{transform:translate(-2px,3px) rotate(-1deg)}
-  60%{transform:translate(-4px,2px) rotate(0deg)}70%{transform:translate(4px,2px) rotate(-1deg)}
-  80%{transform:translate(-2px,-2px) rotate(1deg)}90%{transform:translate(2px,3px) rotate(0deg)}
-  100%{transform:translate(2px,-3px) rotate(-1deg)}
+  0%{transform:translate(2px,2px) rotate(0deg)}10%{transform:translate(-2px,-3px) rotate(-1deg)}
+  20%{transform:translate(-4px,0) rotate(1deg)}30%{transform:translate(4px,3px) rotate(0deg)}
+  40%{transform:translate(2px,-2px) rotate(1deg)}50%{transform:translate(-2px,3px) rotate(-1deg)}
+  60%{transform:translate(-4px,2px) rotate(0deg)}70%{transform:translate(4px,2px) rotate(-1deg)}
+  80%{transform:translate(-2px,-2px) rotate(1deg)}90%{transform:translate(2px,3px) rotate(0deg)}
+  100%{transform:translate(2px,-3px) rotate(-1deg)}
 }
 
 /* Result title styling per segment */
@@ -202,878 +202,858 @@ body.segment-senior #result-title{color:#C4522A;text-shadow:3px 3px 0px #1C1C1C;
 
 /* Responsive */
 @media(max-width:600px){
-  h1{font-size:3.8rem}.content-container{padding:1.5rem}.key-hint{display:none}
-  .entry-header h1{font-size:4.2rem}.tile-label{font-size:1.8rem}
-  #result-title{font-size:4rem!important}body.segment-adult #result-title{font-size:3.5rem!important}
-  .tiles-grid{gap:12px}.glitch-loader{font-size:3.5rem}
+  h1{font-size:3.8rem}.content-container{padding:1.5rem}.key-hint{display:none}
+  .entry-header h1{font-size:4.2rem}.tile-label{font-size:1.8rem}
+  #result-title{font-size:4rem!important}body.segment-adult #result-title{font-size:3.5rem!important}
+  .tiles-grid{gap:12px}.glitch-loader{font-size:3.5rem}
 }
 </style>
 </head>
 <body>
 <div id="app-wrapper">
-  <div class="os-bar"><div class="marquee" id="marquee-text">// YOUR BED HAS YOUR SCHEDULE // OPEN THE RECORD // WHICH ONE ARE YOU //</div></div>
-  <div class="progress-wrapper"><div class="progress-fill" id="progress-bar"></div></div>
-  <div class="content-container">
+  <div class="os-bar"><div class="marquee" id="marquee-text">// YOUR BED HAS YOUR SCHEDULE // OPEN THE RECORD // WHICH ONE ARE YOU //</div></div>
+  <div class="progress-wrapper"><div class="progress-fill" id="progress-bar"></div></div>
+  <div class="content-container">
 
-    <!-- THE LOCK SCREEN (Hidden by default, shown via JS if cookie exists) -->
-    <div id="screen-locked" class="screen" style="padding:4rem 1rem; text-align:center;">
-        <div class="stamp" style="font-size: 3.5rem; transform: rotate(-2deg); margin-bottom: 2rem;">LOCKED</div>
-        <h2 style="font-size: 2.8rem; margin-bottom: 1rem;">SUBMISSION RECORDED</h2>
-        <p style="font-size: 1.3rem; font-weight: 500; font-family: var(--font-body); line-height: 1.5; border: var(--border); padding: 1.5rem; background: var(--card-bg); box-shadow: var(--shadow);">
-            Our database shows you have already submitted your Spatial Audit from this device.<br><br>
-            To preserve data integrity and prevent duplicate entries, multiple submissions have been disabled.
-        </p>
-    </div>
+    <!-- Note: removed "active" class here, it is added by JS on load if not locked -->
+    <div id="screen-entry" class="screen">
+      <div class="entry-header">
+        <h1>THE BED<br>REPORT</h1>
+      </div>
+      <div style="text-align:center;"><div class="stamp">CASE OPEN</div></div>
+      
+      <div class="entry-body">
+        <div style="background:#000; color:var(--accent-lime); padding:1.2rem; border:var(--border); font-family:var(--font-mono); font-size:1.4rem; margin-bottom:2rem; transform:rotate(-1deg); box-shadow:var(--shadow); line-height: 1.3;">
+            TAKE THE TEST.<br>GET YOUR DIAGNOSIS.<br>SEE HOW YOU RANK AGAINST EVERYONE ELSE WHO DARED TO FACE THEIR HABITS.
+        </div>
+        <strong style="font-size:1.5rem; text-transform:uppercase; background:var(--accent); color:#fff; padding:8px 16px; border:var(--border); display:inline-block; transform:rotate(1deg); box-shadow:4px 4px 0px #000;">
+            SELECT YOUR AGE GROUP TO BEGIN ↓
+        </strong>
+      </div>
 
-    <!-- Note: removed "active" class here, it is added by JS on load if not locked -->
-    <div id="screen-entry" class="screen">
-      <div class="entry-header">
-        <h1>THE BED<br>REPORT</h1>
-      </div>
-      <div style="text-align:center;"><div class="stamp">CASE OPEN</div></div>
-      
-      <div class="entry-body">
-        <div style="background:#000; color:var(--accent-lime); padding:1.2rem; border:var(--border); font-family:var(--font-mono); font-size:1.4rem; margin-bottom:2rem; transform:rotate(-1deg); box-shadow:var(--shadow); line-height: 1.3;">
-            TAKE THE TEST.<br>GET YOUR DIAGNOSIS.<br>SEE HOW YOU RANK AGAINST EVERYONE ELSE WHO DARED TO FACE THEIR HABITS.
-        </div>
-        <strong style="font-size:1.5rem; text-transform:uppercase; background:var(--accent); color:#fff; padding:8px 16px; border:var(--border); display:inline-block; transform:rotate(1deg); box-shadow:4px 4px 0px #000;">
-            SELECT YOUR AGE GROUP TO BEGIN ↓
-        </strong>
-      </div>
+      <div class="tiles-grid">
+        <div class="tile tile-student" onclick="app.selectSegment('student')">
+          <div class="tile-label">18–24</div>
+        </div>
+        <div class="tile tile-adult" onclick="app.selectSegment('adult')">
+          <div class="tile-label">25–35</div>
+        </div>
+        <div class="tile tile-senior" onclick="app.selectSegment('senior')">
+          <div class="tile-label">35+</div>
+        </div>
+      </div>
+    </div>
 
-      <div class="tiles-grid">
-        <div class="tile tile-student" onclick="app.selectSegment('student')">
-          <div class="tile-label">18–24</div>
-        </div>
-        <div class="tile tile-adult" onclick="app.selectSegment('adult')">
-          <div class="tile-label">25–35</div>
-        </div>
-        <div class="tile tile-senior" onclick="app.selectSegment('senior')">
-          <div class="tile-label">35+</div>
-        </div>
-      </div>
-    </div>
+    <div id="screen-name" class="screen">
+      <div class="tag" style="margin-bottom:1.5rem;">STEP 01 // IDENTIFICATION</div>
+      <h2 id="name-heading" style="background:#fff;display:inline-block;padding:8px 15px;border:var(--border);box-shadow:var(--shadow);transform:rotate(-1deg)">ENTER YOUR NAME:</h2>
+      <p id="name-subtext" style="font-weight:600;margin-bottom:1.5rem;font-size:1.05rem">This is what will appear on the scoreboard at the end.</p>
+      <div class="input-group">
+        <input type="text" id="user-name-input" placeholder="TYPE NAME..." autocomplete="off">
+      </div>
+      <button class="primary-btn" id="start-btn" style="display:none" onclick="app.startQuiz()">START THE TEST</button>
+    </div>
 
-    <div id="screen-name" class="screen">
-      <div class="tag" style="margin-bottom:1.5rem;">STEP 01 // IDENTIFICATION</div>
-      <h2 id="name-heading" style="background:#fff;display:inline-block;padding:8px 15px;border:var(--border);box-shadow:var(--shadow);transform:rotate(-1deg)">ENTER YOUR NAME:</h2>
-      <p id="name-subtext" style="font-weight:600;margin-bottom:1.5rem;font-size:1.05rem">This is what will appear on the scoreboard at the end.</p>
-      <div class="input-group">
-        <input type="text" id="user-name-input" placeholder="TYPE NAME..." autocomplete="off">
-      </div>
-      <button class="primary-btn" id="start-btn" style="display:none" onclick="app.startQuiz()">START THE TEST</button>
-    </div>
+    <div id="screen-question" class="screen">
+      <div class="q-header-row">
+        <div class="tag" id="q-counter" style="margin-bottom:0;">Q 1</div>
+        <button class="back-btn" id="back-btn" onclick="app.goBack()" style="display:none;">[← BACK]</button>
+      </div>
+      <h2 id="q-title" style="background:#fff;display:inline-block;padding:10px 15px;border:var(--border);box-shadow:var(--shadow);transform:rotate(1deg);margin-bottom:2rem;line-height:1.1"></h2>
+      <div class="options-grid" id="q-options"></div>
+      <button id="next-btn" class="primary-btn" style="display:none" onclick="app.nextQuestion()">LOG &amp; PROCEED</button>
+    </div>
 
-    <div id="screen-question" class="screen">
-      <div class="q-header-row">
-        <div class="tag" id="q-counter" style="margin-bottom:0;">Q 1</div>
-        <button class="back-btn" id="back-btn" onclick="app.goBack()" style="display:none;">[← BACK]</button>
-      </div>
-      <h2 id="q-title" style="background:#fff;display:inline-block;padding:10px 15px;border:var(--border);box-shadow:var(--shadow);transform:rotate(1deg);margin-bottom:2rem;line-height:1.1"></h2>
-      <div class="options-grid" id="q-options"></div>
-      <button id="next-btn" class="primary-btn" style="display:none" onclick="app.nextQuestion()">LOG &amp; PROCEED</button>
-    </div>
+    <div id="screen-calculating" class="screen" style="padding:4rem 0">
+      <div class="glitch-loader" id="calc-text">CALCULATING<br>SCORE...</div>
+    </div>
 
-    <div id="screen-calculating" class="screen" style="padding:4rem 0">
-      <div class="glitch-loader" id="calc-text">CALCULATING<br>SCORE...</div>
-    </div>
+    <div id="screen-result" class="screen">
+      <div class="tag" style="background:var(--accent);color:#fff;border-color:var(--accent); margin-bottom:1.5rem;">FINAL OUTPUT</div>
+      <h1 id="result-title" style="font-size:6rem;margin:10px 0 1rem">STATE</h1>
+      <div class="warning-label">
+        <div class="warning-title">THE DIAGNOSIS</div>
+        <p id="result-diagnosis"></p>
+      </div>
 
-    <div id="screen-result" class="screen">
-      <div class="tag" style="background:var(--accent);color:#fff;border-color:var(--accent); margin-bottom:1.5rem;">FINAL OUTPUT</div>
-      <h1 id="result-title" style="font-size:6rem;margin:10px 0 1rem">STATE</h1>
-      <div class="warning-label">
-        <div class="warning-title">THE DIAGNOSIS</div>
-        <p id="result-diagnosis"></p>
-      </div>
+      <div class="lb-container" id="leaderboard-section" style="display:none;">
+        <h2 id="lb-title" style="font-size: 2.5rem; margin-bottom: 0.5rem; text-align:center;">THE SCOREBOARD</h2>
+        <p class="lb-context">Your score measures how much your work has taken over your rest space. The higher the score, the worse the habit. Here is where you stand against everyone else.</p>
+        
+        <div id="user-rank-display"></div>
 
-      <div class="lb-container" id="leaderboard-section" style="display:none;">
-        <h2 id="lb-title" style="font-size: 2.5rem; margin-bottom: 0.5rem; text-align:center;">THE SCOREBOARD</h2>
-        <p class="lb-context">Your score measures how much your work has taken over your rest space. The higher the score, the worse the habit. Here is where you stand against everyone else.</p>
-        
-        <div id="user-rank-display"></div>
+        <ul class="leaderboard-list" id="leaderboard-list">
+            <li><div style="text-align:center; width:100%;">FETCHING DATABASE...</div></li>
+        </ul>
+      </div>
 
-        <ul class="leaderboard-list" id="leaderboard-list">
-            <li><div style="text-align:center; width:100%;">FETCHING DATABASE...</div></li>
-        </ul>
-      </div>
+      <div id="share-section" style="margin-top: 2rem;">
+        <p id="share-copy" style="display:none;"></p>
+        <button class="primary-btn share-btn" id="share-btn" onclick="app.shareWhatsApp()">SHARE DIAGNOSIS</button>
+        <button class="primary-btn secondary" id="copy-btn" onclick="app.copyShareLink()">COPY LINK</button>
+      </div>
+      <!-- Removed the Restart Button here -->
+    </div>
 
-      <div id="share-section" style="margin-top: 2rem;">
-        <p id="share-copy" style="display:none;"></p>
-        <button class="primary-btn share-btn" id="share-btn" onclick="app.shareWhatsApp()">SHARE DIAGNOSIS</button>
-        <button class="primary-btn secondary" id="copy-btn" onclick="app.copyShareLink()">COPY LINK</button>
-      </div>
-      <!-- Removed the Restart Button here -->
-    </div>
-
-  </div>
+  </div>
 </div>
 <script>
 const API_URL="https://script.google.com/macros/s/AKfycby3E8AEPHN9DZp5vq56awAewPqfAjnItiHf93rbaonJIjXv0E741V0s_9hK9g-wvFH6Fg/exec";
 
 // --- THE 17-QUESTION ARCHITECTURE ---
 const Q = {
-  // PHASE 1: UNIVERSAL
-  u1: { id: 'u1', type: 'radio',
-    title: "First, let's establish your environment. How is your home currently set up?",
-    options: [
-      { text: 'Hostel or PG (Shared room, limited personal space)', points: 1, sets: { living: 'hostel' } },
-      { text: 'Shared flat with flatmates', points: 2, sets: { living: 'shared' } },
-      { text: 'Family home / Joint family setup', points: 2, sets: { living: 'family' } },
-      { text: 'Living alone (Own place)', points: 1, sets: { living: 'alone' } },
-      { text: 'Living with a partner/spouse', points: 2, sets: { living: 'alone', partner: true } }
-    ]
-  },
-  u2: { id: 'u2', type: 'radio',
-    title: "How would you describe your primary daily routine?",
-    options: [
-      { text: 'Full-time student', points: 0, sets: { worktype: 'student' } },
-      { text: 'Student balancing a part-time job or internship', points: 1, sets: { worktype: 'student' } },
-      { text: 'Fully remote (Home is the office)', points: 2, sets: { worktype: 'remote' } },
-      { text: 'Hybrid (Some days office, some days home)', points: 2, sets: { worktype: 'hybrid' } },
-      { text: 'Office-based, but work frequently follows me home', points: 3, sets: { worktype: 'hybrid' } },
-      { text: 'Freelance, self-employed, or running a business', points: 2, sets: { worktype: 'remote' } }
-    ]
-  },
-  u3: { id: 'u3', type: 'radio',
-    title: "When you have a task that requires intense focus, where do you naturally end up sitting?",
-    options: [
-      { text: 'Always at a proper desk or table.', points: 0, sets: { bedlevel: 'low' } },
-      { text: 'Mostly at a desk, but I move to the bed for lighter tasks (emails, reading).', points: 2, sets: { bedlevel: 'mid' } },
-      { text: 'The bed comes first. The desk is only used if absolutely necessary.', points: 3, sets: { bedlevel: 'high' } },
-      { text: 'Exclusively in bed. The desk is basically just holding my clutter.', points: 4, sets: { bedlevel: 'high' } }
-    ]
-  },
-  u4: { id: 'u4', type: 'multi',
-    title: "Notice your physical state right now. Which of these bodily complaints have become completely normal for you? (Select all that apply)",
-    options: [
-      { text: 'Neck or shoulder tension', points: 1, symptom: true },
-      { text: 'Lower back aches', points: 1, symptom: true },
-      { text: 'Eye strain or frequent headaches', points: 1, symptom: true },
-      { text: 'Jaw tension or teeth clenching', points: 1, symptom: true },
-      { text: 'Waking up exhausted even after a full night of sleep', points: 1, symptom: true },
-      { text: 'Racing thoughts when trying to fall asleep', points: 1, symptom: true },
-      { text: 'Honestly, none of these. I feel fine.', points: 0, symptom: false, exclusive: true }
-    ]
-  },
+  // PHASE 1: UNIVERSAL
+  u1: { id: 'u1', type: 'radio',
+    title: "First, let's establish your environment. How is your home currently set up?",
+    options: [
+      { text: 'Hostel or PG (Shared room, limited personal space)', points: 1, sets: { living: 'hostel' } },
+      { text: 'Shared flat with flatmates', points: 2, sets: { living: 'shared' } },
+      { text: 'Family home / Joint family setup', points: 2, sets: { living: 'family' } },
+      { text: 'Living alone (Own place)', points: 1, sets: { living: 'alone' } },
+      { text: 'Living with a partner/spouse', points: 2, sets: { living: 'alone', partner: true } }
+    ]
+  },
+  u2: { id: 'u2', type: 'radio',
+    title: "How would you describe your primary daily routine?",
+    options: [
+      { text: 'Full-time student', points: 0, sets: { worktype: 'student' } },
+      { text: 'Student balancing a part-time job or internship', points: 1, sets: { worktype: 'student' } },
+      { text: 'Fully remote (Home is the office)', points: 2, sets: { worktype: 'remote' } },
+      { text: 'Hybrid (Some days office, some days home)', points: 2, sets: { worktype: 'hybrid' } },
+      { text: 'Office-based, but work frequently follows me home', points: 3, sets: { worktype: 'hybrid' } },
+      { text: 'Freelance, self-employed, or running a business', points: 2, sets: { worktype: 'remote' } }
+    ]
+  },
+  u3: { id: 'u3', type: 'radio',
+    title: "When you have a task that requires intense focus, where do you naturally end up sitting?",
+    options: [
+      { text: 'Always at a proper desk or table.', points: 0, sets: { bedlevel: 'low' } },
+      { text: 'Mostly at a desk, but I move to the bed for lighter tasks (emails, reading).', points: 2, sets: { bedlevel: 'mid' } },
+      { text: 'The bed comes first. The desk is only used if absolutely necessary.', points: 3, sets: { bedlevel: 'high' } },
+      { text: 'Exclusively in bed. The desk is basically just holding my clutter.', points: 4, sets: { bedlevel: 'high' } }
+    ]
+  },
+  u4: { id: 'u4', type: 'multi',
+    title: "Notice your physical state right now. Which of these bodily complaints have become completely normal for you? (Select all that apply)",
+    options: [
+      { text: 'Neck or shoulder tension', points: 1, symptom: true },
+      { text: 'Lower back aches', points: 1, symptom: true },
+      { text: 'Eye strain or frequent headaches', points: 1, symptom: true },
+      { text: 'Jaw tension or teeth clenching', points: 1, symptom: true },
+      { text: 'Waking up exhausted even after a full night of sleep', points: 1, symptom: true },
+      { text: 'Racing thoughts when trying to fall asleep', points: 1, symptom: true },
+      { text: 'Honestly, none of these. I feel fine.', points: 0, symptom: false, exclusive: true }
+    ]
+  },
 
-  // PHASE 2: LIVING BRANCHES
-  // Hostel
-  h1: { id: 'h1', type: 'radio', title: "Hostel rooms aren't known for spaciousness. Is there actually a functional desk available in your room?", options: [
-    { text: 'Yes, and I use it', points: 1 },
-    { text: 'Technically yes, but it’s used for storage', points: 3 },
-    { text: 'No, the bed is the only flat surface', points: 4 }
-  ]},
-  h2: { id: 'h2', type: 'radio', title: "Hostels can get loud. How do you usually handle the noise when you need to focus?", options: [
-    { text: 'Head to the library or common room', points: 1 },
-    { text: 'Put on headphones and push through it from my room', points: 3 },
-    { text: 'Wait until late at night when the dorm finally sleeps', points: 4 }
-  ]},
-  h3: { id: 'h3', type: 'radio', title: "If you had a perfectly quiet, comfortable desk available right now, would you still choose to work from your bed?", options: [
-    { text: "Yes, it's just my habit now", points: 4 },
-    { text: "No, I only use the bed because of my room's constraints", points: 2 }
-  ]},
-  // Family
-  f1: { id: 'f1', type: 'radio', title: "Family homes are bustling. If you try working in a common area like the living room, what usually happens?", options: [
-    { text: 'I can work peacefully', points: 1 },
-    { text: 'I eventually get pulled into family conversations', points: 2 },
-    { text: 'I get asked to help with household tasks', points: 3 },
-    { text: "I don't try—the bedroom is the only quiet place", points: 4 }
-  ]},
-  f2: { id: 'f2', type: 'radio', title: "How do you view your bedroom within the family house?", options: [
-    { text: 'Just the room where I sleep', points: 1 },
-    { text: 'My personal sanctuary', points: 3 },
-    { text: 'The only space where my own needs come first', points: 4 }
-  ]},
-  f3: { id: 'f3', type: 'radio', title: "Does retreating to your bedroom to work ever serve a double purpose—like getting a quiet break from general household activity?", options: [
-    { text: "Yes, it's a peaceful escape", points: 4, sets: { genderSignal: 'escape' } },
-    { text: 'Maybe subconsciously', points: 3 },
-    { text: "No, it's purely about where I prefer to sit", points: 1 }
-  ]},
-  // Alone / Partner
-  a1: { id: 'a1', type: 'radio', title: "You have control over your space. Do you have a dedicated workspace set up?", options: [
-    { text: 'Yes, and I use it daily', points: 1 },
-    { text: 'Yes, but I still gravitate to the bed', points: 3 },
-    { text: 'I meant to set one up, but never did', points: 4 }
-  ]},
-  a2: { id: 'a2', type: 'radio', title: "What usually draws you to work from your bed?", options: [
-    { text: 'Pure comfort', points: 4 },
-    { text: 'The layout of the room just makes it easy', points: 2 },
-    { text: "Honestly, I've never questioned it until now", points: 3 }
-  ]},
-  a3: { id: 'a3', type: 'radio', title: "Have you ever actively tried to ban laptops from your bed and strictly use a desk?", options: [
-    { text: 'Yes, and the boundary holds', points: 1 },
-    { text: 'Yes, but I always slip back into old habits', points: 3 },
-    { text: 'Never tried to separate them', points: 4 }
-  ]},
-  // Shared Flat
-  s1: { id: 's1', type: 'radio', title: "Does your flat have a common area (like a living room or dining table) where you can actually get work done?", options: [
-    { text: 'Yes, and I use it', points: 1 },
-    { text: 'Yes, but someone is usually already there or watching TV', points: 3 },
-    { text: 'No real common space available', points: 3 }
-  ]},
-  s2: { id: 's2', type: 'radio', title: "Think about your flatmates. Do they also tend to work from their beds or couches?", options: [
-    { text: "Yes, it's just the culture of the house", points: 4 },
-    { text: 'Some do, some use desks', points: 2 },
-    { text: 'No, they are pretty disciplined', points: 1 },
-    { text: "I've never paid attention", points: 2 }
-  ]},
-  s3: { id: 's3', type: 'radio', title: "If one of your flatmates set up a perfect desk and worked there every day, would that motivate you to do the same?", options: [
-    { text: 'Yes, seeing it works helps', points: 1 },
-    { text: 'Probably not, I like my current setup', points: 3 },
-    { text: "We don't really influence each other like that", points: 2 }
-  ]},
+  // PHASE 2: LIVING BRANCHES
+  // Hostel
+  h1: { id: 'h1', type: 'radio', title: "Hostel rooms aren't known for spaciousness. Is there actually a functional desk available in your room?", options: [
+    { text: 'Yes, and I use it', points: 1 },
+    { text: 'Technically yes, but it’s used for storage', points: 3 },
+    { text: 'No, the bed is the only flat surface', points: 4 }
+  ]},
+  h2: { id: 'h2', type: 'radio', title: "Hostels can get loud. How do you usually handle the noise when you need to focus?", options: [
+    { text: 'Head to the library or common room', points: 1 },
+    { text: 'Put on headphones and push through it from my room', points: 3 },
+    { text: 'Wait until late at night when the dorm finally sleeps', points: 4 }
+  ]},
+  h3: { id: 'h3', type: 'radio', title: "If you had a perfectly quiet, comfortable desk available right now, would you still choose to work from your bed?", options: [
+    { text: "Yes, it's just my habit now", points: 4 },
+    { text: "No, I only use the bed because of my room's constraints", points: 2 }
+  ]},
+  // Family
+  f1: { id: 'f1', type: 'radio', title: "Family homes are bustling. If you try working in a common area like the living room, what usually happens?", options: [
+    { text: 'I can work peacefully', points: 1 },
+    { text: 'I eventually get pulled into family conversations', points: 2 },
+    { text: 'I get asked to help with household tasks', points: 3 },
+    { text: "I don't try—the bedroom is the only quiet place", points: 4 }
+  ]},
+  f2: { id: 'f2', type: 'radio', title: "How do you view your bedroom within the family house?", options: [
+    { text: 'Just the room where I sleep', points: 1 },
+    { text: 'My personal sanctuary', points: 3 },
+    { text: 'The only space where my own needs come first', points: 4 }
+  ]},
+  f3: { id: 'f3', type: 'radio', title: "Does retreating to your bedroom to work ever serve a double purpose—like getting a quiet break from general household activity?", options: [
+    { text: "Yes, it's a peaceful escape", points: 4, sets: { genderSignal: 'escape' } },
+    { text: 'Maybe subconsciously', points: 3 },
+    { text: "No, it's purely about where I prefer to sit", points: 1 }
+  ]},
+  // Alone / Partner
+  a1: { id: 'a1', type: 'radio', title: "You have control over your space. Do you have a dedicated workspace set up?", options: [
+    { text: 'Yes, and I use it daily', points: 1 },
+    { text: 'Yes, but I still gravitate to the bed', points: 3 },
+    { text: 'I meant to set one up, but never did', points: 4 }
+  ]},
+  a2: { id: 'a2', type: 'radio', title: "What usually draws you to work from your bed?", options: [
+    { text: 'Pure comfort', points: 4 },
+    { text: 'The layout of the room just makes it easy', points: 2 },
+    { text: "Honestly, I've never questioned it until now", points: 3 }
+  ]},
+  a3: { id: 'a3', type: 'radio', title: "Have you ever actively tried to ban laptops from your bed and strictly use a desk?", options: [
+    { text: 'Yes, and the boundary holds', points: 1 },
+    { text: 'Yes, but I always slip back into old habits', points: 3 },
+    { text: 'Never tried to separate them', points: 4 }
+  ]},
+  // Shared Flat
+  s1: { id: 's1', type: 'radio', title: "Does your flat have a common area (like a living room or dining table) where you can actually get work done?", options: [
+    { text: 'Yes, and I use it', points: 1 },
+    { text: 'Yes, but someone is usually already there or watching TV', points: 3 },
+    { text: 'No real common space available', points: 3 }
+  ]},
+  s2: { id: 's2', type: 'radio', title: "Think about your flatmates. Do they also tend to work from their beds or couches?", options: [
+    { text: "Yes, it's just the culture of the house", points: 4 },
+    { text: 'Some do, some use desks', points: 2 },
+    { text: 'No, they are pretty disciplined', points: 1 },
+    { text: "I've never paid attention", points: 2 }
+  ]},
+  s3: { id: 's3', type: 'radio', title: "If one of your flatmates set up a perfect desk and worked there every day, would that motivate you to do the same?", options: [
+    { text: 'Yes, seeing it works helps', points: 1 },
+    { text: 'Probably not, I like my current setup', points: 3 },
+    { text: "We don't really influence each other like that", points: 2 }
+  ]},
 
-  // PHASE 3: WORK BRANCHES
-  // Student
-  st1: { id: 'st1', type: 'radio', title: "College schedules fluctuate wildly. During which period do you find yourself working from bed the most?", options: [
-    { text: "It's my default all year round", points: 4 },
-    { text: "During exam season when I'm too tired to sit at a desk", points: 3 },
-    { text: "During low-stress weeks—deadlines actually force me to a desk", points: 2 }
-  ]},
-  st2: { id: 'st2', type: 'radio', title: "How accessible are the study spaces or libraries on your campus?", options: [
-    { text: "Very accessible, I'm there often", points: 1 },
-    { text: "They exist, but they are always packed", points: 3 },
-    { text: "Too far or inconvenient to rely on", points: 4 }
-  ]},
-  st3: { id: 'st3', type: 'radio', title: "Which of these academic patterns sounds most like you?", options: [
-    { text: 'The Migration: I start at the desk, but fatigue pushes me to bed by evening.', points: 3 },
-    { text: "The Illusion: I tell myself I'll use the desk today, but I never actually do.", points: 4 },
-    { text: 'The Purist: I strictly use the desk for work. The bed is only for sleep.', points: 0 },
-    { text: "The Bunker: When panic or deadlines hit, I don't leave the bed for 12 hours.", points: 4 }
-  ]},
-  // Remote
-  r1: { id: 'r1', type: 'radio', title: "Without a commute to separate 'home' from 'the office', how do you signal to your brain that the workday is over?", options: [
-    { text: 'I have a specific routine that works', points: 1 },
-    { text: 'I try setting strict boundaries, but usually break them', points: 3 },
-    { text: "I don't—work just stops when the tasks are done", points: 4 }
-  ]},
-  r2: { id: 'r2', type: 'radio', title: "Since you started working remotely, how has your sense of working hours changed?", options: [
-    { text: "They got shorter—I'm more efficient", points: 1 },
-    { text: 'They stayed about the same', points: 2 },
-    { text: 'They elongated—work easily bleeds into my evening rest time', points: 4 }
-  ]},
-  r3: { id: 'r3', type: 'radio', title: "If you went to a physical office tomorrow, do you think your posture and boundaries would instantly improve?", options: [
-    { text: 'Yes, the office forces discipline', points: 3 },
-    { text: "Partially, but I'd still slack off at home", points: 3 },
-    { text: 'No, my habits are too deeply ingrained now', points: 4 }
-  ]},
-  // Hybrid
-  hy1: { id: 'hy1', type: 'radio', title: "On the days you work from home, how does your environment change?", options: [
-    { text: 'I only work from bed on WFH days', points: 3 },
-    { text: 'I work from bed even after coming home from the office', points: 4 },
-    { text: 'WFH days start at a desk but end in bed', points: 3 }
-  ]},
-  hy2: { id: 'hy2', type: 'radio', title: "When work follows you home from the office, how often does that happen?", options: [
-    { text: 'Rarely—maybe once a month', points: 1 },
-    { text: 'A few times a week for quick emails', points: 2 },
-    { text: "Almost daily—the office day ends, but the work doesn't", points: 4 }
-  ]},
-  hy3: { id: 'hy3', type: 'radio', title: "When you are finishing up office work at home in the evening, where are you physically sitting?", options: [
-    { text: 'At a proper desk/table', points: 1 },
-    { text: 'On the couch', points: 2 },
-    { text: 'Propped up in bed with the laptop', points: 4 }
-  ]},
+  // PHASE 3: WORK BRANCHES
+  // Student
+  st1: { id: 'st1', type: 'radio', title: "College schedules fluctuate wildly. During which period do you find yourself working from bed the most?", options: [
+    { text: "It's my default all year round", points: 4 },
+    { text: "During exam season when I'm too tired to sit at a desk", points: 3 },
+    { text: "During low-stress weeks—deadlines actually force me to a desk", points: 2 }
+  ]},
+  st2: { id: 'st2', type: 'radio', title: "How accessible are the study spaces or libraries on your campus?", options: [
+    { text: "Very accessible, I'm there often", points: 1 },
+    { text: "They exist, but they are always packed", points: 3 },
+    { text: "Too far or inconvenient to rely on", points: 4 }
+  ]},
+  st3: { id: 'st3', type: 'radio', title: "Which of these academic patterns sounds most like you?", options: [
+    { text: 'The Migration: I start at the desk, but fatigue pushes me to bed by evening.', points: 3 },
+    { text: "The Illusion: I tell myself I'll use the desk today, but I never actually do.", points: 4 },
+    { text: 'The Purist: I strictly use the desk for work. The bed is only for sleep.', points: 0 },
+    { text: "The Bunker: When panic or deadlines hit, I don't leave the bed for 12 hours.", points: 4 }
+  ]},
+  // Remote
+  r1: { id: 'r1', type: 'radio', title: "Without a commute to separate 'home' from 'the office', how do you signal to your brain that the workday is over?", options: [
+    { text: 'I have a specific routine that works', points: 1 },
+    { text: 'I try setting strict boundaries, but usually break them', points: 3 },
+    { text: "I don't—work just stops when the tasks are done", points: 4 }
+  ]},
+  r2: { id: 'r2', type: 'radio', title: "Since you started working remotely, how has your sense of working hours changed?", options: [
+    { text: "They got shorter—I'm more efficient", points: 1 },
+    { text: 'They stayed about the same', points: 2 },
+    { text: 'They elongated—work easily bleeds into my evening rest time', points: 4 }
+  ]},
+  r3: { id: 'r3', type: 'radio', title: "If you went to a physical office tomorrow, do you think your posture and boundaries would instantly improve?", options: [
+    { text: 'Yes, the office forces discipline', points: 3 },
+    { text: "Partially, but I'd still slack off at home", points: 3 },
+    { text: 'No, my habits are too deeply ingrained now', points: 4 }
+  ]},
+  // Hybrid
+  hy1: { id: 'hy1', type: 'radio', title: "On the days you work from home, how does your environment change?", options: [
+    { text: 'I only work from bed on WFH days', points: 3 },
+    { text: 'I work from bed even after coming home from the office', points: 4 },
+    { text: 'WFH days start at a desk but end in bed', points: 3 }
+  ]},
+  hy2: { id: 'hy2', type: 'radio', title: "When work follows you home from the office, how often does that happen?", options: [
+    { text: 'Rarely—maybe once a month', points: 1 },
+    { text: 'A few times a week for quick emails', points: 2 },
+    { text: "Almost daily—the office day ends, but the work doesn't", points: 4 }
+  ]},
+  hy3: { id: 'hy3', type: 'radio', title: "When you are finishing up office work at home in the evening, where are you physically sitting?", options: [
+    { text: 'At a proper desk/table', points: 1 },
+    { text: 'On the couch', points: 2 },
+    { text: 'Propped up in bed with the laptop', points: 4 }
+  ]},
 
-  // PHASE 4: CO-HABITANTS (Dynamic logic)
-  p_pet: { id: 'p_pet', type: 'radio', title: "If you have pets at home, do they ever dictate your workspace?", options: [
-    { text: 'Yes, they steal my chair so I move to the bed', points: 3 },
-    { text: 'Sometimes, but I eventually move them', points: 1 },
-    { text: "No, they don't affect my setup", points: 0 },
-    { text: "I don't have pets", points: 0 }
-  ]},
-  p_partner: { id: 'p_partner', type: 'radio', title: "Sharing a living space requires compromise. How does living with a partner affect your workspace boundaries?", condition: s => s.partner === true, options: [
-    { text: 'We keep each other disciplined with designated workspaces', points: 1 },
-    { text: 'We both ended up normalizing working from the bed/couch', points: 4 },
-    { text: 'We have different habits, which sometimes causes friction', points: 3 },
-    { text: 'My partner goes to an office, so I have the place to myself during the day', points: 1 }
-  ]},
-  p_kids: { id: 'p_kids', type: 'radio', title: "Kids naturally bring beautiful energy to a home. When you need absolute quiet to focus on a task, how do you usually find it?", condition: s => s.segment !== 'student', options: [
-    { text: "I retreat to the bedroom because it's the quietest option", points: 4, sets: { children: true } },
-    { text: 'I work after they go to sleep, often from bed', points: 4, sets: { children: true } },
-    { text: 'I have a designated workspace they know not to interrupt', points: 1, sets: { children: true } },
-    { text: 'I just embrace the chaos and work amidst it', points: 2, sets: { children: true } },
-    { text: "I don't have kids at home", points: 0, sets: { children: false } }
-  ]},
+  // PHASE 4: CO-HABITANTS (Dynamic logic)
+  p_pet: { id: 'p_pet', type: 'radio', title: "If you have pets at home, do they ever dictate your workspace?", options: [
+    { text: 'Yes, they steal my chair so I move to the bed', points: 3 },
+    { text: 'Sometimes, but I eventually move them', points: 1 },
+    { text: "No, they don't affect my setup", points: 0 },
+    { text: "I don't have pets", points: 0 }
+  ]},
+  p_partner: { id: 'p_partner', type: 'radio', title: "Sharing a living space requires compromise. How does living with a partner affect your workspace boundaries?", condition: s => s.partner === true, options: [
+    { text: 'We keep each other disciplined with designated workspaces', points: 1 },
+    { text: 'We both ended up normalizing working from the bed/couch', points: 4 },
+    { text: 'We have different habits, which sometimes causes friction', points: 3 },
+    { text: 'My partner goes to an office, so I have the place to myself during the day', points: 1 }
+  ]},
+  p_kids: { id: 'p_kids', type: 'radio', title: "Kids naturally bring beautiful energy to a home. When you need absolute quiet to focus on a task, how do you usually find it?", condition: s => s.segment !== 'student', options: [
+    { text: "I retreat to the bedroom because it's the quietest option", points: 4, sets: { children: true } },
+    { text: 'I work after they go to sleep, often from bed', points: 4, sets: { children: true } },
+    { text: 'I have a designated workspace they know not to interrupt', points: 1, sets: { children: true } },
+    { text: 'I just embrace the chaos and work amidst it', points: 2, sets: { children: true } },
+    { text: "I don't have kids at home", points: 0, sets: { children: false } }
+  ]},
 
-  // PHASE 5: PHYSICAL TOLL
-  sym1: { id: 'sym1', type: 'radio', title: "You mentioned experiencing physical issues like back pain or poor sleep. Do you feel these are directly connected to working from your bed?", condition: s => s.symptomLoad >= 3, options: [
-    { text: 'Yes, the connection is obvious to me', points: 1 },
-    { text: 'I suspect it, but I also blame general life stress', points: 2 },
-    { text: 'Not really, I think this is just how my body feels lately', points: 4 }
-  ]},
+  // PHASE 5: PHYSICAL TOLL
+  sym1: { id: 'sym1', type: 'radio', title: "You mentioned experiencing physical issues like back pain or poor sleep. Do you feel these are directly connected to working from your bed?", condition: s => s.symptomLoad >= 3, options: [
+    { text: 'Yes, the connection is obvious to me', points: 1 },
+    { text: 'I suspect it, but I also blame general life stress', points: 2 },
+    { text: 'Not really, I think this is just how my body feels lately', points: 4 }
+  ]},
 
-  // PHASE 6: CLOSING
-  cl1: { id: 'cl1', type: 'radio', title: "If working from bed isn't the ideal setup, what is the most honest reason it's so hard to break the habit?", options: [
-    { text: "I genuinely don't have the space for a better setup", points: 2, sets: { awareness: 'stuck' } },
-    { text: 'The bed is just too comfortable to resist', points: 4, sets: { awareness: 'stuck' } },
-    { text: "It's simply not a high enough priority to fix right now", points: 4, sets: { awareness: 'partial' } },
-    { text: 'I have tried to change, but my old routines always pull me back', points: 3, sets: { awareness: 'stuck' } }
-  ]},
-  cl2: { id: 'cl2', type: 'radio', title: "If you could magically fix one thing about your environment to help you separate work from rest, what would you choose?", options: [
-    { text: 'A physical door that closes and is respected by others', points: 3 },
-    { text: "A desk and chair I actually find comfortable", points: 2 },
-    { text: 'A completely separate room just for work', points: 2 },
-    { text: 'Nothing—my space is fine, the issue is my own discipline', points: 4 }
-  ]},
-  cl3: { id: 'cl3', type: 'radio', title: "Lighting plays a huge role in telling our brains it's time to rest. How does the lighting in your bedroom change when the workday ends?", options: [
-    { text: 'I switch to a warm lamp or softer lighting', points: 1 },
-    { text: 'The main overhead lights stay on until the second I try to sleep', points: 4 },
-    { text: "I just switch all the lights off entirely when I'm done working", points: 2 },
-    { text: "I've never really thought about lighting affecting my focus or rest", points: 3 }
-  ]}
+  // PHASE 6: CLOSING
+  cl1: { id: 'cl1', type: 'radio', title: "If working from bed isn't the ideal setup, what is the most honest reason it's so hard to break the habit?", options: [
+    { text: "I genuinely don't have the space for a better setup", points: 2, sets: { awareness: 'stuck' } },
+    { text: 'The bed is just too comfortable to resist', points: 4, sets: { awareness: 'stuck' } },
+    { text: "It's simply not a high enough priority to fix right now", points: 4, sets: { awareness: 'partial' } },
+    { text: 'I have tried to change, but my old routines always pull me back', points: 3, sets: { awareness: 'stuck' } }
+  ]},
+  cl2: { id: 'cl2', type: 'radio', title: "If you could magically fix one thing about your environment to help you separate work from rest, what would you choose?", options: [
+    { text: 'A physical door that closes and is respected by others', points: 3 },
+    { text: "A desk and chair I actually find comfortable", points: 2 },
+    { text: 'A completely separate room just for work', points: 2 },
+    { text: 'Nothing—my space is fine, the issue is my own discipline', points: 4 }
+  ]},
+  cl3: { id: 'cl3', type: 'radio', title: "Lighting plays a huge role in telling our brains it's time to rest. How does the lighting in your bedroom change when the workday ends?", options: [
+    { text: 'I switch to a warm lamp or softer lighting', points: 1 },
+    { text: 'The main overhead lights stay on until the second I try to sleep', points: 4 },
+    { text: "I just switch all the lights off entirely when I'm done working", points: 2 },
+    { text: "I've never really thought about lighting affecting my focus or rest", points: 3 }
+  ]}
 };
 
 function buildQuestionQueue(state) {
-  return [Q.u1, Q.u2, Q.u3, Q.u4];
+  return [Q.u1, Q.u2, Q.u3, Q.u4];
 }
 
 function getNextBatch(phase, state) {
-  const q = [];
-  if (phase === 'living') {
-    if (state.living === 'hostel') q.push(Q.h1, Q.h2, Q.h3);
-    else if (state.living === 'family') q.push(Q.f1, Q.f2, Q.f3);
-    else if (state.living === 'alone') q.push(Q.a1, Q.a2, Q.a3);
-    else if (state.living === 'shared') q.push(Q.s1, Q.s2, Q.s3);
-  }
-  if (phase === 'work') {
-    if (state.worktype === 'student') q.push(Q.st1, Q.st2, Q.st3);
-    else if (state.worktype === 'remote') q.push(Q.r1, Q.r2, Q.r3);
-    else if (state.worktype === 'hybrid') q.push(Q.hy1, Q.hy2, Q.hy3);
-  }
-  if (phase === 'special') {
-    q.push(Q.p_pet, Q.p_partner, Q.p_kids);
-  }
-  if (phase === 'symptom') {
-    q.push(Q.sym1);
-  }
-  if (phase === 'closing') {
-    q.push(Q.cl1, Q.cl2, Q.cl3);
-  }
-  return q;
+  const q = [];
+  if (phase === 'living') {
+    if (state.living === 'hostel') q.push(Q.h1, Q.h2, Q.h3);
+    else if (state.living === 'family') q.push(Q.f1, Q.f2, Q.f3);
+    else if (state.living === 'alone') q.push(Q.a1, Q.a2, Q.a3);
+    else if (state.living === 'shared') q.push(Q.s1, Q.s2, Q.s3);
+  }
+  if (phase === 'work') {
+    if (state.worktype === 'student') q.push(Q.st1, Q.st2, Q.st3);
+    else if (state.worktype === 'remote') q.push(Q.r1, Q.r2, Q.r3);
+    else if (state.worktype === 'hybrid') q.push(Q.hy1, Q.hy2, Q.hy3);
+  }
+  if (phase === 'special') {
+    q.push(Q.p_pet, Q.p_partner, Q.p_kids);
+  }
+  if (phase === 'symptom') {
+    q.push(Q.sym1);
+  }
+  if (phase === 'closing') {
+    q.push(Q.cl1, Q.cl2, Q.cl3);
+  }
+  return q;
 }
 
 const STATE_NAMES = {
-  student:['INTACT','AT RISK','COMPROMISED','COLLAPSED','CRITICAL'],
-  adult:['SOLID','SLIPPING','BLURRED','COLLAPSED','CRITICAL'],
-  senior:['STABLE','DRIFTING','CHRONIC','EMBEDDED','CASE STUDY']
+  student:['INTACT','AT RISK','COMPROMISED','COLLAPSED','CRITICAL'],
+  adult:['SOLID','SLIPPING','BLURRED','COLLAPSED','CRITICAL'],
+  senior:['STABLE','DRIFTING','CHRONIC','EMBEDDED','CASE STUDY']
 };
 
 function getStateLevel(score) {
-  if (score<18) return 0; if (score<28) return 1; if (score<38) return 2; if (score<48) return 3; return 4;
+  if (score<18) return 0; if (score<28) return 1; if (score<38) return 2; if (score<48) return 3; return 4;
 }
 
 function getResultTitle(segment, level) { return STATE_NAMES[segment][level]; }
 
 function getDiagnosis(segment, level, s) {
-  if (segment==='student') {
-    if (level===0) return "Your spatial boundaries are intact. Your brain still knows the difference between where you sleep and where you work. This is rarer than you think. The system hasn't gotten to you yet.";
-    if (level===1) {
-      let d="The transition gap is shrinking. Your brain is losing the buffer between focus and rest. The bed is winning small battles. Lighter tasks, casual scrolling, the occasional deadline panic.";
-      if (s.living==='hostel') d+=" The hostel setup is not helping. Your space was never designed for boundaries.";
-      return d;
-    }
-    if (level===2) {
-      let d="Severe role blurring. You work and relax in the same posture, same spot, same lighting. Your nervous system is stuck in permanent low-level alert.";
-      if (s.symptomLoad>=3) d+=" Your body has been filing complaints. "+s.symptomLoad+" symptoms and counting. The spine is not a personality trait. It is infrastructure you are neglecting.";
-      if (s.living==='family'&&s.genderSignal==='escape') d+=" The bedroom is not just your workspace. It is the only room where unpaid labour cannot reach you.";
-      return d;
-    }
-    if (level===3) {
-      let d="Revenge bedtime procrastination. Your daytime agency feels compromised, so you steal time at night. The bed is a survival bunker now.";
-      if (s.worktype==='remote'||s.worktype==='freelance') d+=" No commute, no transition. The bed filled that gap before any ritual could.";
-      if (s.living==='hostel') d+=" Your space made this choice before your habits did.";
-      return d;
-    }
-    let d="Complete spatial collapse. The room has been overridden by screens. Circadian rhythm compromised. The bedroom is a 24-hour sensory trap.";
-    if (s.living==='hostel') d="Your space made this decision before your habits did. The system failed you before you could fail yourself. "+d;
-    else if (s.living==='alone') d="You have full agency over this space. The problem is purely habit now. And habits can be interrupted. "+d;
-    else if (s.living==='family'&&s.genderSignal==='escape') d="The bedroom is doing two jobs: workspace and the only room where unpaid labour cannot find you. That is an impossible load for one room. "+d;
-    if (s.worktype==='remote') d+=" The commute disappeared. The bed filled the vacuum faster than any intentional ritual could. You never built the replacement.";
-    if (s.bedlevel==='high'&&s.symptomLoad>=3&&(s.living==='hostel'||s.living==='family')) d+=" Constrained into this, then conditioned by it. The body has been absorbing costs the space refused to distribute.";
-    return d;
-  }
+  if (segment==='student') {
+    if (level===0) return "Your spatial boundaries are intact. Your brain still knows the difference between where you sleep and where you work. This is rarer than you think. The system hasn't gotten to you yet.";
+    if (level===1) {
+      let d="The transition gap is shrinking. Your brain is losing the buffer between focus and rest. The bed is winning small battles. Lighter tasks, casual scrolling, the occasional deadline panic.";
+      if (s.living==='hostel') d+=" The hostel setup is not helping. Your space was never designed for boundaries.";
+      return d;
+    }
+    if (level===2) {
+      let d="Severe role blurring. You work and relax in the same posture, same spot, same lighting. Your nervous system is stuck in permanent low-level alert.";
+      if (s.symptomLoad>=3) d+=" Your body has been filing complaints. "+s.symptomLoad+" symptoms and counting. The spine is not a personality trait. It is infrastructure you are neglecting.";
+      if (s.living==='family'&&s.genderSignal==='escape') d+=" The bedroom is not just your workspace. It is the only room where unpaid labour cannot reach you.";
+      return d;
+    }
+    if (level===3) {
+      let d="Revenge bedtime procrastination. Your daytime agency feels compromised, so you steal time at night. The bed is a survival bunker now.";
+      if (s.worktype==='remote'||s.worktype==='freelance') d+=" No commute, no transition. The bed filled that gap before any ritual could.";
+      if (s.living==='hostel') d+=" Your space made this choice before your habits did.";
+      return d;
+    }
+    let d="Complete spatial collapse. The room has been overridden by screens. Circadian rhythm compromised. The bedroom is a 24-hour sensory trap.";
+    if (s.living==='hostel') d="Your space made this decision before your habits did. The system failed you before you could fail yourself. "+d;
+    else if (s.living==='alone') d="You have full agency over this space. The problem is purely habit now. And habits can be interrupted. "+d;
+    else if (s.living==='family'&&s.genderSignal==='escape') d="The bedroom is doing two jobs: workspace and the only room where unpaid labour cannot find you. That is an impossible load for one room. "+d;
+    if (s.worktype==='remote') d+=" The commute disappeared. The bed filled the vacuum faster than any intentional ritual could. You never built the replacement.";
+    if (s.bedlevel==='high'&&s.symptomLoad>=3&&(s.living==='hostel'||s.living==='family')) d+=" Constrained into this, then conditioned by it. The body has been absorbing costs the space refused to distribute.";
+    return d;
+  }
 
-  if (segment==='adult') {
-    if (level===0) {
-      let d="Assessment complete. Your work-rest boundaries are holding. Spatial hygiene metrics above baseline. The domestic workspace has not collapsed into the rest environment.";
-      return d;
-    }
-    if (level===1) {
-      let d="Minor boundary erosion detected. Occasional role contamination. Lighter tasks migrating to the bed. Decompression protocols inconsistent.";
-      if (s.worktype==='hybrid') d+=" The office is providing structural support your home setup lacks. This dependency is noted.";
-      return d;
-    }
-    if (level===2) {
-      let d="Persistent boundary collapse in the domestic workspace. The work-rest separation exists on paper but not in practice. Your spatial hygiene metrics are below baseline.";
-      if (s.symptomLoad>=3) d+=" "+s.symptomLoad+" active symptom flags. The body is generating error reports your habits are ignoring.";
-      if (s.partner===true) d+=" Shared bedroom dynamics are compounding the pattern. Two collapse trajectories in one room accelerate both.";
-      return d;
-    }
-    if (level===3) {
-      let d="Performance review flagged. The domestic workspace has been absorbed by the rest environment. Transition rituals absent or non-functional. Work hours have expanded into recovery territory.";
-      if (s.worktype==='remote'||s.worktype==='freelance') d+=" Remote work removed the last external structure. The calendar says the day ends at 6. Your laptop disagrees.";
-      if (s.living==='family'&&s.genderSignal==='escape') d+=" The bedroom serves dual function: workspace and asylum from domestic labour. Neither function is being served well.";
-      return d;
-    }
-    let d="Final warning. Complete spatial dissociation. The bedroom is a 24-hour facility with no scheduled downtime. All boundary protocols have failed.";
-    if (s.living==='alone'&&!s.partner) d="Full environmental control available. No external constraints. The pattern is entirely self-sustaining. "+d;
-    else if (s.living==='family'&&s.genderSignal==='escape') d="The bedroom performs two roles: workspace and the only room where domestic requests cannot find you. Impossible KPI for one room. "+d;
-    if (s.worktype==='remote') d+=" The commute gap was never addressed. The bed filled it. No replacement transition was ever built.";
-    if (s.bedlevel==='high'&&s.symptomLoad>=3) d+=" "+s.symptomLoad+" symptom flags active. The body's error logs have been ignored long enough to become the new baseline.";
-    return d;
-  }
+  if (segment==='adult') {
+    if (level===0) {
+      let d="Assessment complete. Your work-rest boundaries are holding. Spatial hygiene metrics above baseline. The domestic workspace has not collapsed into the rest environment.";
+      return d;
+    }
+    if (level===1) {
+      let d="Minor boundary erosion detected. Occasional role contamination. Lighter tasks migrating to the bed. Decompression protocols inconsistent.";
+      if (s.worktype==='hybrid') d+=" The office is providing structural support your home setup lacks. This dependency is noted.";
+      return d;
+    }
+    if (level===2) {
+      let d="Persistent boundary collapse in the domestic workspace. The work-rest separation exists on paper but not in practice. Your spatial hygiene metrics are below baseline.";
+      if (s.symptomLoad>=3) d+=" "+s.symptomLoad+" active symptom flags. The body is generating error reports your habits are ignoring.";
+      if (s.partner===true) d+=" Shared bedroom dynamics are compounding the pattern. Two collapse trajectories in one room accelerate both.";
+      return d;
+    }
+    if (level===3) {
+      let d="Performance review flagged. The domestic workspace has been absorbed by the rest environment. Transition rituals absent or non-functional. Work hours have expanded into recovery territory.";
+      if (s.worktype==='remote'||s.worktype==='freelance') d+=" Remote work removed the last external structure. The calendar says the day ends at 6. Your laptop disagrees.";
+      if (s.living==='family'&&s.genderSignal==='escape') d+=" The bedroom serves dual function: workspace and asylum from domestic labour. Neither function is being served well.";
+      return d;
+    }
+    let d="Final warning. Complete spatial dissociation. The bedroom is a 24-hour facility with no scheduled downtime. All boundary protocols have failed.";
+    if (s.living==='alone'&&!s.partner) d="Full environmental control available. No external constraints. The pattern is entirely self-sustaining. "+d;
+    else if (s.living==='family'&&s.genderSignal==='escape') d="The bedroom performs two roles: workspace and the only room where domestic requests cannot find you. Impossible KPI for one room. "+d;
+    if (s.worktype==='remote') d+=" The commute gap was never addressed. The bed filled it. No replacement transition was ever built.";
+    if (s.bedlevel==='high'&&s.symptomLoad>=3) d+=" "+s.symptomLoad+" symptom flags active. The body's error logs have been ignored long enough to become the new baseline.";
+    return d;
+  }
 
-  if (segment==='senior') {
-    if (level===0) return "STABLE. You have defended your boundaries against the modern spatial collapse. Your mattress remains a sanctuary. The bedroom serves one function, and that function is rest. This is increasingly uncommon. The record reflects discipline.";
-    if (level===1) {
-      let d="Monitoring advised. Minor boundary drift over time. The bedroom has picked up secondary functions. Not enough to flag, enough to note. The pattern is early and still reversible.";
-      if (s.symptomLoad>=2) d+=" Some physical markers present. Not chronic yet. Worth attention now rather than later.";
-      return d;
-    }
-    if (level===2) {
-      let d="Chronic pattern detected. The bedroom's role expanded gradually enough that each step felt reasonable. In total, the drift is significant. You have had these symptoms long enough that your body stopped flagging them as unusual. They are still unusual.";
-      if (s.worktype==='remote'||s.worktype==='freelance') d+=" The work-from-home arrangement normalized what was meant to be temporary. The transition ritual you never built is now years overdue.";
-      return d;
-    }
-    if (level===3) {
-      let d="Long-term impact noted. The symptoms have been present long enough to feel like personality traits. They are not. The boundary between workspace and rest space dissolved so gradually that noticing required this assessment.";
-      if (s.symptomLoad>=3) d+=" "+s.symptomLoad+" active symptoms. Duration matters. Chronic low-grade strain compounds in ways acute stress does not.";
-      if (s.children===true) d+=" The bedroom became the last adult-only territory. It was not built to carry that weight alongside everything else.";
-      return d;
-    }
-    let d="Case study. The record is extensive. The bedroom has been a multi-function facility long enough that reversing the pattern means acknowledging how embedded it has become. You knew. You adapted instead of changing. The body adapted too. But adaptation is not the same as health.";
-    if (s.living==='alone'&&!s.partner) d+=" Full agency over the environment existed throughout. The habit sustained itself without external constraint. That is worth sitting with.";
-    else if (s.living==='family'&&s.genderSignal==='escape') d+=" The bedroom became workspace and the only room where domestic expectation could not reach. One room, two survival functions, zero rest.";
-    if (s.symptomLoad>=3) d+=" The symptoms have been present long enough to feel architectural. They are still symptoms.";
-    return d;
-  }
-  return "Assessment complete.";
+  if (segment==='senior') {
+    if (level===0) return "STABLE. You have defended your boundaries against the modern spatial collapse. Your mattress remains a sanctuary. The bedroom serves one function, and that function is rest. This is increasingly uncommon. The record reflects discipline.";
+    if (level===1) {
+      let d="Monitoring advised. Minor boundary drift over time. The bedroom has picked up secondary functions. Not enough to flag, enough to note. The pattern is early and still reversible.";
+      if (s.symptomLoad>=2) d+=" Some physical markers present. Not chronic yet. Worth attention now rather than later.";
+      return d;
+    }
+    if (level===2) {
+      let d="Chronic pattern detected. The bedroom's role expanded gradually enough that each step felt reasonable. In total, the drift is significant. You have had these symptoms long enough that your body stopped flagging them as unusual. They are still unusual.";
+      if (s.worktype==='remote'||s.worktype==='freelance') d+=" The work-from-home arrangement normalized what was meant to be temporary. The transition ritual you never built is now years overdue.";
+      return d;
+    }
+    if (level===3) {
+      let d="Long-term impact noted. The symptoms have been present long enough to feel like personality traits. They are not. The boundary between workspace and rest space dissolved so gradually that noticing required this assessment.";
+      if (s.symptomLoad>=3) d+=" "+s.symptomLoad+" active symptoms. Duration matters. Chronic low-grade strain compounds in ways acute stress does not.";
+      if (s.children===true) d+=" The bedroom became the last adult-only territory. It was not built to carry that weight alongside everything else.";
+      return d;
+    }
+    let d="Case study. The record is extensive. The bedroom has been a multi-function facility long enough that reversing the pattern means acknowledging how embedded it has become. You knew. You adapted instead of changing. The body adapted too. But adaptation is not the same as health.";
+    if (s.living==='alone'&&!s.partner) d+=" Full agency over the environment existed throughout. The habit sustained itself without external constraint. That is worth sitting with.";
+    else if (s.living==='family'&&s.genderSignal==='escape') d+=" The bedroom became workspace and the only room where domestic expectation could not reach. One room, two survival functions, zero rest.";
+    if (s.symptomLoad>=3) d+=" The symptoms have been present long enough to feel architectural. They are still symptoms.";
+    return d;
+  }
+  return "Assessment complete.";
 }
 
 function getShareCopy(segment, stateName, score) {
-  const c = [
-    `The Bed Report diagnosed me as: ${stateName} (Score: ${score}). My mattress filed a formal complaint.`,
-    `I just took The Bed Report and got: ${stateName} with ${score} points. The algorithm roasted my posture.`,
-    `Just opened my file on The Bed Report. Diagnosis: ${stateName} (${score} points). Apparently my habits have their own habits.`
-  ];
-  return c[Math.floor(Math.random() * c.length)];
+  const c = [
+    `The Bed Report diagnosed me as: ${stateName} (Score: ${score}). My mattress filed a formal complaint.`,
+    `I just took The Bed Report and got: ${stateName} with ${score} points. The algorithm roasted my posture.`,
+    `Just opened my file on The Bed Report. Diagnosis: ${stateName} (${score} points). Apparently my habits have their own habits.`
+  ];
+  return c[Math.floor(Math.random() * c.length)];
 }
 
 const MARQUEE = {
-  entry:"// YOUR BED HAS YOUR SCHEDULE // OPEN THE RECORD // WHICH ONE ARE YOU //",
-  student:"// YOUR BED KNOWS YOUR SCHEDULE // YOUR MATTRESS HAS OPINIONS // THE ALGORITHM KNOWS WHEN YOU LIE //",
-  adult:"// AUDIT IN PROGRESS // ALL RESPONSES ARE LOGGED // YOUR HABITS HAVE A PAPER TRAIL //",
-  senior:"// THE RECORD IS OPEN // SOME PATTERNS PREDATE YOUR AWARENESS // FILE UNDER REVIEW //"
+  entry:"// YOUR BED HAS YOUR SCHEDULE // OPEN THE RECORD // WHICH ONE ARE YOU //",
+  student:"// YOUR BED KNOWS YOUR SCHEDULE // YOUR MATTRESS HAS OPINIONS // THE ALGORITHM KNOWS WHEN YOU LIE //",
+  adult:"// AUDIT IN PROGRESS // ALL RESPONSES ARE LOGGED // YOUR HABITS HAVE A PAPER TRAIL //",
+  senior:"// THE RECORD IS OPEN // SOME PATTERNS PREDATE YOUR AWARENESS // FILE UNDER REVIEW //"
 };
 
 const app = {
-  state: {
-    segment: null, living: null, worktype: null, bedlevel: null,
-    symptomLoad: 0, awareness: null, genderSignal: null,
-    partner: false, children: false, a3trigger: false,
-    totalScore: 0, playerName: '', currentIndex: 0,
-    questionQueue: [], answers: {}, answerKeys: {},
-    isActive: false, questionNumber: 0, phase: 'universal',
-    phaseIndex: 0, history: []
-  },
-  phases: ['universal','living','work','special','children','symptom','closing'],
+  state: {
+    segment: null, living: null, worktype: null, bedlevel: null,
+    symptomLoad: 0, awareness: null, genderSignal: null,
+    partner: false, children: false, a3trigger: false,
+    totalScore: 0, playerName: '', currentIndex: 0,
+    questionQueue: [], answers: {}, answerKeys: {},
+    isActive: false, questionNumber: 0, phase: 'universal',
+    phaseIndex: 0, history: []
+  },
+  phases: ['universal','living','work','special','children','symptom','closing'],
 
-  transition(hideId, showId) {
-    const h = document.getElementById(hideId);
-    const s = document.getElementById(showId);
-    if (h) h.classList.remove('active');
-    setTimeout(() => { if (s) s.classList.add('active'); }, 50);
-  },
+  transition(hideId, showId) {
+    const h = document.getElementById(hideId);
+    const s = document.getElementById(showId);
+    if (h) h.classList.remove('active');
+    setTimeout(() => { if (s) s.classList.add('active'); }, 50);
+  },
 
-  init() {
-    // 🔥 THE DEVICE LOCK CHECK 🔥
-    if (localStorage.getItem("bedReportTaken") === "true") {
-        document.getElementById('screen-locked').classList.add('active');
-        document.getElementById('marquee-text').textContent = "// ACCESS DENIED // RECORD ALREADY LOGGED //";
-        return; // Prevent the rest of the app from launching
-    } else {
-        document.getElementById('screen-entry').classList.add('active');
-    }
+  init() {
+    document.getElementById('screen-entry').classList.add('active');
 
-    const nameInput = document.getElementById('user-name-input');
-    const startBtn = document.getElementById('start-btn');
-    nameInput.addEventListener('input', e => {
-      app.state.playerName = e.target.value.trim();
-      startBtn.style.display = app.state.playerName.length > 1 ? 'block' : 'none';
-    });
-    nameInput.addEventListener('keydown', e => {
-      if (e.key === 'Enter' && app.state.playerName.length > 1) app.startQuiz();
-    });
-    document.addEventListener('keydown', app.handleKeypress);
-  },
+    const nameInput = document.getElementById('user-name-input');
+    const startBtn = document.getElementById('start-btn');
+    nameInput.addEventListener('input', e => {
+      app.state.playerName = e.target.value.trim();
+      startBtn.style.display = app.state.playerName.length > 1 ? 'block' : 'none';
+    });
+    nameInput.addEventListener('keydown', e => {
+      if (e.key === 'Enter' && app.state.playerName.length > 1) app.startQuiz();
+    });
+    document.addEventListener('keydown', app.handleKeypress);
+  },
 
-  selectSegment(seg) {
-    app.state.segment = seg;
-    document.body.className = 'segment-' + seg;
-    document.getElementById('marquee-text').textContent = MARQUEE[seg] || MARQUEE.entry;
-    app.state.questionQueue = buildQuestionQueue(app.state);
-    app.state.phase = 'universal';
-    app.state.phaseIndex = 0;
-    app.transition('screen-entry', 'screen-name');
-    setTimeout(() => document.getElementById('user-name-input').focus(), 100);
-  },
+  selectSegment(seg) {
+    app.state.segment = seg;
+    document.body.className = 'segment-' + seg;
+    document.getElementById('marquee-text').textContent = MARQUEE[seg] || MARQUEE.entry;
+    app.state.questionQueue = buildQuestionQueue(app.state);
+    app.state.phase = 'universal';
+    app.state.phaseIndex = 0;
+    app.transition('screen-entry', 'screen-name');
+    setTimeout(() => document.getElementById('user-name-input').focus(), 100);
+  },
 
-  startQuiz() {
-    if (app.state.playerName.length < 2) return;
-    app.state.isActive = true;
-    app.state.questionNumber = 0;
-    app.state.history = [];
-    app.transition('screen-name', 'screen-question');
-    app.renderQuestion();
-  },
+  startQuiz() {
+    if (app.state.playerName.length < 2) return;
+    app.state.isActive = true;
+    app.state.questionNumber = 0;
+    app.state.history = [];
+    app.transition('screen-name', 'screen-question');
+    app.renderQuestion();
+  },
 
-  getCurrentQuestion() {
-    while (app.state.currentIndex < app.state.questionQueue.length) {
-      const q = app.state.questionQueue[app.state.currentIndex];
-      if (q.condition && !q.condition(app.state)) { app.state.currentIndex++; continue; }
-      return q;
-    }
-    return null;
-  },
+  getCurrentQuestion() {
+    while (app.state.currentIndex < app.state.questionQueue.length) {
+      const q = app.state.questionQueue[app.state.currentIndex];
+      if (q.condition && !q.condition(app.state)) { app.state.currentIndex++; continue; }
+      return q;
+    }
+    return null;
+  },
 
-  renderQuestion() {
-    const q = app.getCurrentQuestion();
-    if (!q) { app.advancePhase(); return; }
-    app.state.questionNumber++;
-    document.getElementById('q-counter').innerText = 'Q ' + app.state.questionNumber;
-    
-    // Toggle back button visibility
-    document.getElementById('back-btn').style.display = app.state.history.length > 0 ? 'block' : 'none';
-    
-    const title = typeof q.title === 'string' ? q.title : (q.title[app.state.segment] || q.title.student || q.title.adult);
-    document.getElementById('q-title').innerText = title;
-    
-    let opts = q.options;
-    if (!Array.isArray(opts)) opts = opts[app.state.segment] || opts.student || opts.adult;
+  renderQuestion() {
+    const q = app.getCurrentQuestion();
+    if (!q) { app.advancePhase(); return; }
+    app.state.questionNumber++;
+    document.getElementById('q-counter').innerText = 'Q ' + app.state.questionNumber;
+    
+    // Toggle back button visibility
+    document.getElementById('back-btn').style.display = app.state.history.length > 0 ? 'block' : 'none';
+    
+    const title = typeof q.title === 'string' ? q.title : (q.title[app.state.segment] || q.title.student || q.title.adult);
+    document.getElementById('q-title').innerText = title;
+    
+    let opts = q.options;
+    if (!Array.isArray(opts)) opts = opts[app.state.segment] || opts.student || opts.adult;
 
-    const optContainer = document.getElementById('q-options');
-    optContainer.innerHTML = '';
-    document.getElementById('next-btn').style.display = 'none';
-    const pct = Math.min((app.state.questionNumber / 17) * 100, 95);
-    document.getElementById('progress-bar').style.width = pct + '%';
+    const optContainer = document.getElementById('q-options');
+    optContainer.innerHTML = '';
+    document.getElementById('next-btn').style.display = 'none';
+    const pct = Math.min((app.state.questionNumber / 17) * 100, 95);
+    document.getElementById('progress-bar').style.width = pct + '%';
 
-    opts.forEach((opt, idx) => {
-      const btn = document.createElement('button');
-      btn.className = 'option-btn' + (q.type === 'multi' ? ' multi-mode' : '');
-      btn.innerHTML = '<span class="key-hint">' + (idx + 1) + '</span> <span>' + opt.text + '</span>';
-      btn.dataset.idx = idx;
-      btn.onclick = () => app.handleSelection(btn, opt, q, opts);
-      optContainer.appendChild(btn);
-    });
+    opts.forEach((opt, idx) => {
+      const btn = document.createElement('button');
+      btn.className = 'option-btn' + (q.type === 'multi' ? ' multi-mode' : '');
+      btn.innerHTML = '<span class="key-hint">' + (idx + 1) + '</span> <span>' + opt.text + '</span>';
+      btn.dataset.idx = idx;
+      btn.onclick = () => app.handleSelection(btn, opt, q, opts);
+      optContainer.appendChild(btn);
+    });
 
-    if (q.type === 'multi') {
-      document.getElementById('next-btn').style.display = 'block';
-      document.getElementById('next-btn').textContent = 'PROCEED';
-    }
-  },
+    if (q.type === 'multi') {
+      document.getElementById('next-btn').style.display = 'block';
+      document.getElementById('next-btn').textContent = 'PROCEED';
+    }
+  },
 
-  handleSelection(btn, option, question, opts) {
-    if (question.type === 'radio') {
-      btn.blur();
-      document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
-      btn.classList.add('selected');
-      app.state.answerKeys[question.id] = { text: option.text, points: option.points, option: option };
-      setTimeout(() => app.nextQuestion(), 280);
-    } else {
-      if (option.exclusive) {
-        document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
-        btn.classList.add('selected');
-        app.state.answerKeys[question.id] = [{ text: option.text, points: option.points, option: option }];
-        return;
-      }
-      
-      document.querySelectorAll('.option-btn').forEach(b => {
-        const i = parseInt(b.dataset.idx);
-        if (opts[i] && opts[i].exclusive) b.classList.remove('selected');
-      });
-      btn.classList.toggle('selected');
-      const selected = [];
-      document.querySelectorAll('.option-btn.selected').forEach(b => {
-        const i = parseInt(b.dataset.idx);
-        selected.push({ text: opts[i].text, points: opts[i].points, option: opts[i] });
-      });
-      app.state.answerKeys[question.id] = selected;
-    }
-  },
+  handleSelection(btn, option, question, opts) {
+    if (question.type === 'radio') {
+      btn.blur();
+      document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      app.state.answerKeys[question.id] = { text: option.text, points: option.points, option: option };
+      setTimeout(() => app.nextQuestion(), 280);
+    } else {
+      if (option.exclusive) {
+        document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        app.state.answerKeys[question.id] = [{ text: option.text, points: option.points, option: option }];
+        return;
+      }
+      
+      document.querySelectorAll('.option-btn').forEach(b => {
+        const i = parseInt(b.dataset.idx);
+        if (opts[i] && opts[i].exclusive) b.classList.remove('selected');
+      });
+      btn.classList.toggle('selected');
+      const selected = [];
+      document.querySelectorAll('.option-btn.selected').forEach(b => {
+        const i = parseInt(b.dataset.idx);
+        selected.push({ text: opts[i].text, points: opts[i].points, option: opts[i] });
+      });
+      app.state.answerKeys[question.id] = selected;
+    }
+  },
 
-  nextQuestion() {
-    const q = app.getCurrentQuestion();
-    if (!q) return;
-    const answer = app.state.answerKeys[q.id];
-    if (!answer || (Array.isArray(answer) && answer.length === 0)) {
-      document.getElementById('q-title').style.transform = 'rotate(3deg)';
-      setTimeout(() => document.getElementById('q-title').style.transform = 'rotate(1deg)', 150);
-      return;
-    }
-    
-    // Save state BEFORE advancing so we can go back
-    app.state.history.push({
-        phase: app.state.phase,
-        currentIndex: app.state.currentIndex,
-        questionNumber: app.state.questionNumber,
-        qId: q.id
-    });
-    
-    if (Array.isArray(answer)) {
-      answer.forEach(a => { app.state.totalScore += a.points; });
-      if (q.id === 'u4') {
-        app.state.symptomLoad = answer.filter(a => a.option && a.option.symptom).length;
-      }
-    } else {
-      app.state.totalScore += answer.points;
-    }
-    
-    const opt = Array.isArray(answer) ? null : answer.option;
-    if (opt && opt.sets) {
-      Object.keys(opt.sets).forEach(k => { app.state[k] = opt.sets[k]; });
-    }
-    app.state.answers[q.id] = answer;
-    app.state.currentIndex++;
-    if (app.state.currentIndex >= app.state.questionQueue.length) { app.advancePhase(); }
-    else { app.renderQuestion(); }
-  },
+  nextQuestion() {
+    const q = app.getCurrentQuestion();
+    if (!q) return;
+    const answer = app.state.answerKeys[q.id];
+    if (!answer || (Array.isArray(answer) && answer.length === 0)) {
+      document.getElementById('q-title').style.transform = 'rotate(3deg)';
+      setTimeout(() => document.getElementById('q-title').style.transform = 'rotate(1deg)', 150);
+      return;
+    }
+    
+    // Save state BEFORE advancing so we can go back
+    app.state.history.push({
+        phase: app.state.phase,
+        currentIndex: app.state.currentIndex,
+        questionNumber: app.state.questionNumber,
+        qId: q.id
+    });
+    
+    if (Array.isArray(answer)) {
+      answer.forEach(a => { app.state.totalScore += a.points; });
+      if (q.id === 'u4') {
+        app.state.symptomLoad = answer.filter(a => a.option && a.option.symptom).length;
+      }
+    } else {
+      app.state.totalScore += answer.points;
+    }
+    
+    const opt = Array.isArray(answer) ? null : answer.option;
+    if (opt && opt.sets) {
+      Object.keys(opt.sets).forEach(k => { app.state[k] = opt.sets[k]; });
+    }
+    app.state.answers[q.id] = answer;
+    app.state.currentIndex++;
+    if (app.state.currentIndex >= app.state.questionQueue.length) { app.advancePhase(); }
+    else { app.renderQuestion(); }
+  },
 
-  goBack() {
-    if (app.state.history.length === 0) return;
-    const last = app.state.history.pop();
-    
-    // Revert Phase and Indexes
-    app.state.phase = last.phase;
-    app.state.currentIndex = last.currentIndex;
-    app.state.questionNumber = last.questionNumber - 1; 
-    
-    // Wipe the answer we are reverting from memory
-    delete app.state.answers[last.qId];
-    delete app.state.answerKeys[last.qId];
-    
-    // Rebuild state tags based on the surviving answers
-    app.recalculateState();
-    
-    // Re-fetch correct queue for the reverted phase
-    if (app.state.phase === 'universal') {
-        app.state.questionQueue = buildQuestionQueue(app.state);
-    } else {
-        app.state.questionQueue = getNextBatch(app.state.phase, app.state);
-    }
-    
-    app.renderQuestion();
-  },
+  goBack() {
+    if (app.state.history.length === 0) return;
+    const last = app.state.history.pop();
+    
+    // Revert Phase and Indexes
+    app.state.phase = last.phase;
+    app.state.currentIndex = last.currentIndex;
+    app.state.questionNumber = last.questionNumber - 1; 
+    
+    // Wipe the answer we are reverting from memory
+    delete app.state.answers[last.qId];
+    delete app.state.answerKeys[last.qId];
+    
+    // Rebuild state tags based on the surviving answers
+    app.recalculateState();
+    
+    // Re-fetch correct queue for the reverted phase
+    if (app.state.phase === 'universal') {
+        app.state.questionQueue = buildQuestionQueue(app.state);
+    } else {
+        app.state.questionQueue = getNextBatch(app.state.phase, app.state);
+    }
+    
+    app.renderQuestion();
+  },
 
-  recalculateState() {
-    const s = app.state;
-    // Wipe specific logic tags
-    s.living = null; s.worktype = null; s.bedlevel = null;
-    s.symptomLoad = 0; s.awareness = null; s.genderSignal = null;
-    s.partner = false; s.children = false; s.a3trigger = false;
-    s.totalScore = 0;
+  recalculateState() {
+    const s = app.state;
+    // Wipe specific logic tags
+    s.living = null; s.worktype = null; s.bedlevel = null;
+    s.symptomLoad = 0; s.awareness = null; s.genderSignal = null;
+    s.partner = false; s.children = false; s.a3trigger = false;
+    s.totalScore = 0;
 
-    // Loop through existing answers and re-apply their points/tags
-    for (const key in s.answerKeys) {
-        const ans = s.answerKeys[key];
-        if (Array.isArray(ans)) {
-            ans.forEach(a => { 
-                s.totalScore += a.points; 
-                if (a.option && a.option.sets) {
-                    Object.keys(a.option.sets).forEach(k => { s[k] = a.option.sets[k]; });
-                }
-            });
-            if (key === 'u4') {
-                s.symptomLoad = ans.filter(a => a.option && a.option.symptom).length;
-            }
-        } else {
-            s.totalScore += ans.points;
-            if (ans.option && ans.option.sets) {
-                Object.keys(ans.option.sets).forEach(k => { s[k] = ans.option.sets[k]; });
-            }
-        }
-    }
-  },
+    // Loop through existing answers and re-apply their points/tags
+    for (const key in s.answerKeys) {
+        const ans = s.answerKeys[key];
+        if (Array.isArray(ans)) {
+            ans.forEach(a => { 
+                s.totalScore += a.points; 
+                if (a.option && a.option.sets) {
+                    Object.keys(a.option.sets).forEach(k => { s[k] = a.option.sets[k]; });
+                }
+            });
+            if (key === 'u4') {
+                s.symptomLoad = ans.filter(a => a.option && a.option.symptom).length;
+            }
+        } else {
+            s.totalScore += ans.points;
+            if (ans.option && ans.option.sets) {
+                Object.keys(ans.option.sets).forEach(k => { s[k] = ans.option.sets[k]; });
+            }
+        }
+    }
+  },
 
-  advancePhase() {
-    const phases = app.phases;
-    const currentPhaseIdx = phases.indexOf(app.state.phase);
-    for (let i = currentPhaseIdx + 1; i < phases.length; i++) {
-      const nextPhase = phases[i];
-      const batch = getNextBatch(nextPhase, app.state);
-      if (batch.length > 0) {
-        app.state.phase = nextPhase;
-        app.state.questionQueue = batch;
-        app.state.currentIndex = 0;
-        app.renderQuestion();
-        return;
-      }
-    }
-    app.state.isActive = false;
-    app.processResults();
-  },
+  advancePhase() {
+    const phases = app.phases;
+    const currentPhaseIdx = phases.indexOf(app.state.phase);
+    for (let i = currentPhaseIdx + 1; i < phases.length; i++) {
+      const nextPhase = phases[i];
+      const batch = getNextBatch(nextPhase, app.state);
+      if (batch.length > 0) {
+        app.state.phase = nextPhase;
+        app.state.questionQueue = batch;
+        app.state.currentIndex = 0;
+        app.renderQuestion();
+        return;
+      }
+    }
+    app.state.isActive = false;
+    app.processResults();
+  },
 
-  handleKeypress(e) {
-    if (e.key === 'Enter') {
-      if (document.getElementById('screen-entry').classList.contains('active')) return;
-      if (document.getElementById('screen-name').classList.contains('active')) {
-        if (app.state.playerName.length > 1) app.startQuiz();
-        return;
-      }
-      if (document.getElementById('screen-question').classList.contains('active') && document.getElementById('next-btn').style.display === 'block') {
-        app.nextQuestion();
-      }
-      return;
-    }
-    if (app.state.isActive && document.getElementById('screen-question').classList.contains('active')) {
-      const num = parseInt(e.key);
-      const buttons = document.querySelectorAll('.option-btn');
-      if (num > 0 && num <= buttons.length) buttons[num - 1].click();
-    }
-  },
+  handleKeypress(e) {
+    if (e.key === 'Enter') {
+      if (document.getElementById('screen-entry').classList.contains('active')) return;
+      if (document.getElementById('screen-name').classList.contains('active')) {
+        if (app.state.playerName.length > 1) app.startQuiz();
+        return;
+      }
+      if (document.getElementById('screen-question').classList.contains('active') && document.getElementById('next-btn').style.display === 'block') {
+        app.nextQuestion();
+      }
+      return;
+    }
+    if (app.state.isActive && document.getElementById('screen-question').classList.contains('active')) {
+      const num = parseInt(e.key);
+      const buttons = document.querySelectorAll('.option-btn');
+      if (num > 0 && num <= buttons.length) buttons[num - 1].click();
+    }
+  },
 
-  processResults() {
-    try {
-        document.getElementById('progress-bar').style.width = '100%';
-        app.transition('screen-question', 'screen-calculating');
-        
-        const s = app.state;
-        const level = getStateLevel(s.totalScore);
-        const title = getResultTitle(s.segment, level);
-        const diag = getDiagnosis(s.segment, level, s);
-        
-        const shareCopy = getShareCopy(s.segment, title, s.totalScore);
-        
-        document.getElementById('result-title').innerText = title;
-        document.getElementById('result-diagnosis').innerText = diag;
-        document.getElementById('share-copy').innerText = shareCopy;
-        
-        document.getElementById('leaderboard-section').style.display = 'block';
-        
-        app.fetchLeaderboard();
-        app.submitToDatabase(title);
-    } catch (error) {
-        console.error("Critical rendering error:", error);
-    } finally {
-        setTimeout(() => { app.transition('screen-calculating', 'screen-result'); }, 1800);
-    }
-  },
+  processResults() {
+    try {
+        document.getElementById('progress-bar').style.width = '100%';
+        app.transition('screen-question', 'screen-calculating');
+        
+        const s = app.state;
+        const level = getStateLevel(s.totalScore);
+        const title = getResultTitle(s.segment, level);
+        const diag = getDiagnosis(s.segment, level, s);
+        
+        const shareCopy = getShareCopy(s.segment, title, s.totalScore);
+        
+        document.getElementById('result-title').innerText = title;
+        document.getElementById('result-diagnosis').innerText = diag;
+        document.getElementById('share-copy').innerText = shareCopy;
+        
+        document.getElementById('leaderboard-section').style.display = 'block';
+        
+        app.fetchLeaderboard();
+        app.submitToDatabase(title);
+    } catch (error) {
+        console.error("Critical rendering error:", error);
+    } finally {
+        setTimeout(() => { app.transition('screen-calculating', 'screen-result'); }, 1800);
+    }
+  },
 
-  shareWhatsApp() {
-    const text = document.getElementById('share-copy').innerText;
-    const url = window.location.href;
-    window.open('https://wa.me/?text=' + encodeURIComponent(text + " Take the test here: " + url), '_blank');
-  },
+  shareWhatsApp() {
+    const text = document.getElementById('share-copy').innerText;
+    const url = window.location.href;
+    window.open('https://wa.me/?text=' + encodeURIComponent(text + " Take the test here: " + url), '_blank');
+  },
 
-  copyShareLink() {
-    const text = document.getElementById('share-copy').innerText;
-    const fullText = text + " Take the test here: " + window.location.href;
-    navigator.clipboard.writeText(fullText).then(() => {
-      const btn = document.getElementById('copy-btn');
-      btn.innerText = 'COPIED'; setTimeout(() => { btn.innerText = 'COPY LINK'; }, 2000);
-    }).catch(() => {
-      const ta = document.createElement('textarea');
-      ta.value = fullText; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
-      document.getElementById('copy-btn').innerText = 'COPIED';
-      setTimeout(() => { document.getElementById('copy-btn').innerText = 'COPY LINK'; }, 2000);
-    });
-  },
+  copyShareLink() {
+    const text = document.getElementById('share-copy').innerText;
+    const fullText = text + " Take the test here: " + window.location.href;
+    navigator.clipboard.writeText(fullText).then(() => {
+      const btn = document.getElementById('copy-btn');
+      btn.innerText = 'COPIED'; setTimeout(() => { btn.innerText = 'COPY LINK'; }, 2000);
+    }).catch(() => {
+      const ta = document.createElement('textarea');
+      ta.value = fullText; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+      document.getElementById('copy-btn').innerText = 'COPIED';
+      setTimeout(() => { document.getElementById('copy-btn').innerText = 'COPY LINK'; }, 2000);
+    });
+  },
 
-  submitToDatabase(resultTitle) {
-    const s = app.state; const a = s.answers;
-    const gt = id => { const v=a[id]; if(!v) return ''; if(Array.isArray(v)) return v.map(x=>x.text).join(' | '); return v.text||''; };
-    
-    // 🔥 PASSIVE DATA HARVESTING ADDED HERE 🔥
-    const payload = {
-      timestamp: new Date().toISOString(), name: s.playerName, segment: s.segment,
-      score: s.totalScore, result_state: resultTitle,
-      living_type: s.living||'', work_type: s.worktype||'', bed_level: s.bedlevel||'', symptom_count: s.symptomLoad,
-      device_info: navigator.userAgent, 
-      u1: gt('u1'), u2: gt('u2'), u3: gt('u3'), u4: gt('u4'),
-      h1: gt('h1'), h2: gt('h2'), h3: gt('h3'),
-      f1: gt('f1'), f2: gt('f2'), f3: gt('f3'),
-      a1: gt('a1'), a2: gt('a2'), a3: gt('a3'),
-      s1: gt('s1'), s2: gt('s2'), s3: gt('s3'),
-      st1: gt('st1'), st2: gt('st2'), st3: gt('st3'),
-      r1: gt('r1'), r2: gt('r2'), r3: gt('r3'),
-      hy1: gt('hy1'), hy2: gt('hy2'), hy3: gt('hy3'),
-      p_pet: gt('p_pet'), p_partner: gt('p_partner'), p_kids: gt('p_kids'),
-      sym1: gt('sym1'),
-      cl1: gt('cl1'), cl2: gt('cl2'), cl3: gt('cl3')
-    };
+  submitToDatabase(resultTitle) {
+    const s = app.state; const a = s.answers;
+    const gt = id => { const v=a[id]; if(!v) return ''; if(Array.isArray(v)) return v.map(x=>x.text).join(' | '); return v.text||''; };
+    
+    // 🔥 PASSIVE DATA HARVESTING ADDED HERE 🔥
+    const payload = {
+      timestamp: new Date().toISOString(), name: s.playerName, segment: s.segment,
+      score: s.totalScore, result_state: resultTitle,
+      living_type: s.living||'', work_type: s.worktype||'', bed_level: s.bedlevel||'', symptom_count: s.symptomLoad,
+      device_info: navigator.userAgent, 
+      u1: gt('u1'), u2: gt('u2'), u3: gt('u3'), u4: gt('u4'),
+      h1: gt('h1'), h2: gt('h2'), h3: gt('h3'),
+      f1: gt('f1'), f2: gt('f2'), f3: gt('f3'),
+      a1: gt('a1'), a2: gt('a2'), a3: gt('a3'),
+      s1: gt('s1'), s2: gt('s2'), s3: gt('s3'),
+      st1: gt('st1'), st2: gt('st2'), st3: gt('st3'),
+      r1: gt('r1'), r2: gt('r2'), r3: gt('r3'),
+      hy1: gt('hy1'), hy2: gt('hy2'), hy3: gt('hy3'),
+      p_pet: gt('p_pet'), p_partner: gt('p_partner'), p_kids: gt('p_kids'),
+      sym1: gt('sym1'),
+      cl1: gt('cl1'), cl2: gt('cl2'), cl3: gt('cl3')
+    };
 
-    try { 
-        fetch(API_URL, {
-            method:'POST', mode:'no-cors',
-            headers:{'Content-Type':'text/plain;charset=utf-8'},
-            body:JSON.stringify(payload)
-        }).then(() => {
-            // 🔥 LOCK THE DEVICE ONCE SECURELY SUBMITTED 🔥
-            localStorage.setItem("bedReportTaken", "true");
-        }).catch(e => console.log('Database transmission error', e));
-    }
-    catch(e) { console.log('DB Post Error', e); }
-  },
+    try { 
+        fetch(API_URL, {
+            method:'POST', mode:'no-cors',
+            headers:{'Content-Type':'text/plain;charset=utf-8'},
+            body:JSON.stringify(payload)
+        }).catch(e => console.log('Database transmission error', e));
+    }
+    catch(e) { console.log('DB Post Error', e); }
+  },
 
-  fetchLeaderboard() {
-      const lbList = document.getElementById('leaderboard-list');
-      const rankDisplay = document.getElementById('user-rank-display');
-      
-      const myScore = app.state.totalScore;
-      const myName = app.state.playerName.toUpperCase() || 'YOU';
-      const myState = document.getElementById('result-title').innerText;
+  fetchLeaderboard() {
+      const lbList = document.getElementById('leaderboard-list');
+      const rankDisplay = document.getElementById('user-rank-display');
+      
+      const myScore = app.state.totalScore;
+      const myName = app.state.playerName.toUpperCase() || 'YOU';
+      const myState = document.getElementById('result-title').innerText;
 
-      const renderRank = (score, rank, total) => {
-        rankDisplay.innerHTML = `
-            <div style="text-align:center; padding: 1.2rem; background: #000; color: #fff; border: var(--border); font-family: var(--font-mono); font-size: 1.4rem; margin-bottom: 1.5rem; font-weight: bold; transform: rotate(-1deg); box-shadow: var(--shadow);">
-                <div style="color:var(--accent-lime); font-size:1rem; margin-bottom: 0.5rem;">— YOUR PERFORMANCE FILE —</div>
-                SCORE DETECTED: <span style="color:var(--accent); font-size: 1.8rem;">${score} pts</span><br>
-                RANKING: <span style="color:var(--accent); font-size: 1.8rem;">#${rank}</span> out of ${total}
-            </div>`;
-        rankDisplay.style.display = 'block';
-      };
+      const renderRank = (score, rank, total) => {
+        rankDisplay.innerHTML = `
+            <div style="text-align:center; padding: 1.2rem; background: #000; color: #fff; border: var(--border); font-family: var(--font-mono); font-size: 1.4rem; margin-bottom: 1.5rem; font-weight: bold; transform: rotate(-1deg); box-shadow: var(--shadow);">
+                <div style="color:var(--accent-lime); font-size:1rem; margin-bottom: 0.5rem;">— YOUR PERFORMANCE FILE —</div>
+                SCORE DETECTED: <span style="color:var(--accent); font-size: 1.8rem;">${score} pts</span><br>
+                RANKING: <span style="color:var(--accent); font-size: 1.8rem;">#${rank}</span> out of ${total}
+            </div>`;
+        rankDisplay.style.display = 'block';
+      };
 
-      fetch(API_URL)
-        .then(response => response.json())
-        .then(data => {
-            const validData = (data || []).filter(d => d.score !== undefined && d.score !== null && !isNaN(parseInt(d.score)));
-            
-            const alreadyInDB = validData.findIndex(d => d.name.toUpperCase() === myName && parseInt(d.score) === myScore);
-            
-            if (alreadyInDB !== -1) {
-                validData[alreadyInDB].name = myName + " (YOU)";
-            } else {
-                validData.push({
-                    name: myName + " (YOU)",
-                    score: myScore,
-                    state: myState
-                });
-            }
+      fetch(API_URL)
+        .then(response => response.json())
+        .then(data => {
+            const validData = (data || []).filter(d => d.score !== undefined && d.score !== null && !isNaN(parseInt(d.score)));
+            
+            const alreadyInDB = validData.findIndex(d => d.name.toUpperCase() === myName && parseInt(d.score) === myScore);
+            
+            if (alreadyInDB !== -1) {
+                validData[alreadyInDB].name = myName + " (YOU)";
+            } else {
+                validData.push({
+                    name: myName + " (YOU)",
+                    score: myScore,
+                    state: myState
+                });
+            }
 
-            validData.sort((a, b) => parseInt(b.score) - parseInt(a.score));
-            
-            const top5 = validData.slice(0, 5);
-            lbList.innerHTML = top5.map((item, index) => {
-                const isMe = item.name.includes('(YOU)') ? 'color:var(--accent-lime); background:#111;' : '';
-                return `<li style="${isMe}">
-                    <span>#${index+1} ${item.name}</span>
-                    <span>${item.state || 'DONE'} [${item.score}pts]</span>
-                </li>`;
-            }).join('');
-            
-            const myRank = validData.findIndex(d => d.name === myName + " (YOU)" && parseInt(d.score) === myScore) + 1;
-            const totalCohortSize = validData.length;
-            
-            renderRank(myScore, myRank, totalCohortSize);
-        })
-        .catch(err => { 
-            console.error("Leaderboard Error: ", err);
-            lbList.innerHTML = `<li style="color:var(--accent-lime); background:#111;">
-                <span>#1 ${myName} (YOU)</span>
-                <span>${myState} [${myScore}pts]</span>
-            </li>`; 
-            renderRank(myScore, 1, 1);
-        });
-  }
+            validData.sort((a, b) => parseInt(b.score) - parseInt(a.score));
+            
+            const top5 = validData.slice(0, 5);
+            lbList.innerHTML = top5.map((item, index) => {
+                const isMe = item.name.includes('(YOU)') ? 'color:var(--accent-lime); background:#111;' : '';
+                return `<li style="${isMe}">
+                    <span>#${index+1} ${item.name}</span>
+                    <span>${item.state || 'DONE'} [${item.score}pts]</span>
+                </li>`;
+            }).join('');
+            
+            const myRank = validData.findIndex(d => d.name === myName + " (YOU)" && parseInt(d.score) === myScore) + 1;
+            const totalCohortSize = validData.length;
+            
+            renderRank(myScore, myRank, totalCohortSize);
+        })
+        .catch(err => { 
+            console.error("Leaderboard Error: ", err);
+            lbList.innerHTML = `<li style="color:var(--accent-lime); background:#111;">
+                <span>#1 ${myName} (YOU)</span>
+                <span>${myState} [${myScore}pts]</span>
+            </li>`; 
+            renderRank(myScore, 1, 1);
+        });
+  }
 };
 
 window.onload = app.init;
